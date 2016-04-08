@@ -47,8 +47,7 @@ public class HeaderFmt1 extends HeaderTable {
     return delta;
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -66,20 +65,18 @@ public class HeaderFmt1 extends HeaderTable {
       super();
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(COVERAGE_INDEX, COVERAGE_DEFAULT);
       setField(DELTA_GLYPH_ID_INDEX, DELTA_GLYPH_ID_DEFAULT);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return FIELD_COUNT;
     }
 
-    @Override
-    protected HeaderFmt1 subBuildTable(ReadableFontData data) {
+    @Override protected HeaderFmt1 subBuildTable(ReadableFontData data) {
       return new HeaderFmt1(data, 0, false);
     }
   }
+
 }

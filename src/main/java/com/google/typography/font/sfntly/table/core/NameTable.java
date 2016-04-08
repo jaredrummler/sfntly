@@ -757,8 +757,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       final int platformId, final int encodingId, final int languageId, final int nameId) {
     Iterator<NameEntry> nameEntryIter = this.iterator(new NameEntryFilter() {
 
-      @Override
-      public boolean accept(int pid, int eid, int lid, int nid) {
+      @Override public boolean accept(int pid, int eid, int lid, int nid) {
         if (pid == platformId && eid == encodingId && lid == languageId && nid == nameId) {
           return true;
         }
@@ -853,8 +852,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return this.nameId;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
       if (!(obj instanceof NameEntryId)) {
         return false;
       }
@@ -863,8 +861,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
           && (this.platformId == other.platformId) && (this.nameId == other.nameId);
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
       /*
        * - this takes advantage of the sizes of the various entries and the fact
        * that the ranges of their values have an almost zero probability of ever
@@ -885,8 +882,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
      * are equal
      * @see Comparable#compareTo(Object)
      */
-    @Override
-    public int compareTo(NameEntryId o) {
+    @Override public int compareTo(NameEntryId o) {
       if (this.platformId != o.platformId) {
         return this.platformId - o.platformId;
       }
@@ -899,8 +895,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return this.nameId - o.nameId;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       StringBuilder sb = new StringBuilder();
       sb.append("P=");
       sb.append(PlatformId.valueOf(this.platformId));
@@ -1001,8 +996,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return NameTable.convertFromNameBytes(this.nameBytes, this.platformId(), this.encodingId());
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       StringBuilder sb = new StringBuilder();
       sb.append("[");
       sb.append(this.nameEntryId);
@@ -1013,8 +1007,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return sb.toString();
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
       if (!(obj instanceof NameEntry)) {
         return false;
       }
@@ -1033,8 +1026,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return true;
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
       int hash = this.nameEntryId.hashCode();
       for (int i = 0; i < this.nameBytes.length; i += 4) {
         for (int j = 0; j < 4 && j + i < this.nameBytes.length; j++) {
@@ -1119,8 +1111,7 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       this.filter = filter;
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (this.filter == null) {
         if (this.nameIndex < nameCount()) {
           return true;
@@ -1137,22 +1128,19 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return false;
     }
 
-    @Override
-    public NameEntry next() {
+    @Override public NameEntry next() {
       if (!hasNext()) {
         throw new NoSuchElementException();
       }
       return nameEntry(this.nameIndex++);
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException("Cannot remove a CMap table from an existing font.");
     }
   }
 
-  @Override
-  public Iterator<NameEntry> iterator() {
+  @Override public Iterator<NameEntry> iterator() {
     return new NameEntryIterator();
   }
 
@@ -1429,19 +1417,16 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
 
     // subclass API implementation
 
-    @Override
-    protected NameTable subBuildTable(ReadableFontData data) {
+    @Override protected NameTable subBuildTable(ReadableFontData data) {
       return new NameTable(this.header(), data);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.nameEntryMap = null;
       super.setModelChanged(false);
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.nameEntryMap == null || this.nameEntryMap.size() == 0) {
         return 0;
       }
@@ -1454,16 +1439,14 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return size;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.nameEntryMap == null || this.nameEntryMap.size() == 0) {
         return false;
       }
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       int stringTableStartOffset =
           Offset.nameRecordStart.offset + this.nameEntryMap.size()
               * Offset.nameRecordSize.offset;
@@ -1499,4 +1482,5 @@ public final class NameTable extends SubTableContainerTable implements Iterable<
       return stringOffset + stringTableStartOffset;
     }
   }
+
 }

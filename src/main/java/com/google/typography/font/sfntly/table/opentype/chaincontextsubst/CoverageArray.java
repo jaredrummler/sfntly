@@ -34,8 +34,7 @@ public class CoverageArray extends OffsetRecordTable<CoverageTable> {
     super(records);
   }
 
-  @Override
-  protected CoverageTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected CoverageTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new CoverageTable(data, 0, dataIsCanonical);
   }
 
@@ -45,39 +44,33 @@ public class CoverageArray extends OffsetRecordTable<CoverageTable> {
       super(records);
     }
 
-    @Override
-    protected CoverageArray readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected CoverageArray readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new CoverageArray(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<CoverageTable> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<CoverageTable> createSubTableBuilder() {
       return new CoverageTable.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<CoverageTable> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<CoverageTable> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new CoverageTable.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<CoverageTable> createSubTableBuilder(CoverageTable subTable) {
+    @Override protected VisibleSubTable.Builder<CoverageTable> createSubTableBuilder(CoverageTable subTable) {
       return new CoverageTable.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
+
 }

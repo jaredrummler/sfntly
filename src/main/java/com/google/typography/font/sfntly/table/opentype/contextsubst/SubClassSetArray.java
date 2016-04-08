@@ -42,8 +42,7 @@ public class SubClassSetArray extends OffsetRecordTable<SubClassSet> {
     classDef = new ClassDefTable(data.slice(classDefOffset), 0, dataIsCanonical);
   }
 
-  @Override
-  public SubClassSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override public SubClassSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new SubClassSet(data, 0, dataIsCanonical);
   }
 
@@ -61,41 +60,35 @@ public class SubClassSetArray extends OffsetRecordTable<SubClassSet> {
       super(table);
     }
 
-    @Override
-    protected SubClassSetArray readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected SubClassSetArray readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new SubClassSetArray(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubClassSet> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<SubClassSet> createSubTableBuilder() {
       return new SubClassSet.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubClassSet> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<SubClassSet> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new SubClassSet.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubClassSet> createSubTableBuilder(SubClassSet subTable) {
+    @Override protected VisibleSubTable.Builder<SubClassSet> createSubTableBuilder(SubClassSet subTable) {
       return new SubClassSet.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(COVERAGE_INDEX, COVERAGE_DEFAULT);
       setField(CLASS_DEF_INDEX, CLASS_DEF_DEFAULT);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return FIELD_COUNT;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
+
 }

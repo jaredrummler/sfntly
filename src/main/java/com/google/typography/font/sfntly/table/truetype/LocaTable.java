@@ -141,21 +141,18 @@ public final class LocaTable extends Table {
     private LocaIterator() {
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (this.index <= numGlyphs) {
         return true;
       }
       return false;
     }
 
-    @Override
-    public Integer next() {
+    @Override public Integer next() {
       return loca(index++);
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException();
     }
   }
@@ -403,18 +400,15 @@ public final class LocaTable extends Table {
       return this.getLocaList().get(index);
     }
 
-    @Override
-    protected LocaTable subBuildTable(ReadableFontData data) {
+    @Override protected LocaTable subBuildTable(ReadableFontData data) {
       return new LocaTable(this.header(), data, this.formatVersion, this.numGlyphs);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.initialize(this.internalReadData());
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.loca == null) {
         return 0;
       }
@@ -424,13 +418,11 @@ public final class LocaTable extends Table {
       return this.loca.size() * FontData.DataSize.USHORT.size();
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return this.loca != null;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       int size = 0;
       for (int l : this.loca) {
         if (this.formatVersion == IndexToLocFormat.longOffset) {
@@ -443,4 +435,5 @@ public final class LocaTable extends Table {
       return size;
     }
   }
+
 }

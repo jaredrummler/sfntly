@@ -120,29 +120,25 @@ public class GSubTable extends Table {
       gsub = new GsubCommonTable.Builder(data, false);
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return gsub.subSerialize(newData);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return gsub.subReadyToSerialize();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return 0; // TODO(cibu): need to implement using gsub
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // TODO(cibu): need to implement using gsub
     }
 
-    @Override
-    protected GSubTable subBuildTable(ReadableFontData data) {
+    @Override protected GSubTable subBuildTable(ReadableFontData data) {
       return new GSubTable(this.header(), data, false);
     }
   }
+
 }

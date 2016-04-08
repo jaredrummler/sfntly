@@ -184,8 +184,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return this.encodingId;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
       if (obj == this) {
         return true;
       }
@@ -199,18 +198,15 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return false;
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
       return this.platformId << 8 | this.encodingId;
     }
 
-    @Override
-    public int compareTo(CMapId o) {
+    @Override public int compareTo(CMapId o) {
       return this.hashCode() - o.hashCode();
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       StringBuilder b = new StringBuilder();
       b.append("pid = ");
       b.append(this.platformId);
@@ -333,8 +329,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
   /**
    * Gets an iterator over all of the cmaps within this CMapTable.
    */
-  @Override
-  public Iterator<CMap> iterator() {
+  @Override public Iterator<CMap> iterator() {
     return new CMapIterator();
   }
 
@@ -350,8 +345,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
     return new CMapIterator(filter);
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder(super.toString());
     sb.append(" = { ");
     for (int i = 0; i < this.numCMaps(); i++) {
@@ -403,8 +397,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       this.filter = filter;
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (this.filter == null) {
         if (this.tableIndex < numCMaps()) {
           return true;
@@ -419,8 +412,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return false;
     }
 
-    @Override
-    public CMap next() {
+    @Override public CMap next() {
       if (!hasNext()) {
         throw new NoSuchElementException();
       }
@@ -434,8 +426,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       }
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException("Cannot remove a CMap table from an existing font.");
     }
   }
@@ -470,8 +461,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
   public CMap cmap(final CMapId cmapId) {
     Iterator<CMap> cmapIter = this.iterator(new CMapFilter() {
 
-      @Override
-      public boolean accept(CMapId foundCMapId) {
+      @Override public boolean accept(CMapId foundCMapId) {
         if (cmapId.equals(foundCMapId)) {
           return true;
         }
@@ -560,8 +550,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return builder;
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.cmapBuilders = null;
       super.setModelChanged(false);
     }
@@ -597,8 +586,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return this.getCMapBuilders().size();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.cmapBuilders == null || this.cmapBuilders.size() == 0) {
         return 0;
       }
@@ -616,8 +604,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return variable ? -size : size;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.cmapBuilders == null) {
         return false;
       }
@@ -630,8 +617,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       int size = newData.writeUShort(Offset.version.offset, this.version());
       size += newData.writeUShort(Offset.numTables.offset, this.cmapBuilders.size());
 
@@ -649,8 +635,7 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
       return size;
     }
 
-    @Override
-    protected CMapTable subBuildTable(ReadableFontData data) {
+    @Override protected CMapTable subBuildTable(ReadableFontData data) {
       return new CMapTable(this.header(), data);
     }
 
@@ -704,4 +689,5 @@ public final class CMapTable extends SubTableContainerTable implements Iterable<
     }
 
   }
+
 }

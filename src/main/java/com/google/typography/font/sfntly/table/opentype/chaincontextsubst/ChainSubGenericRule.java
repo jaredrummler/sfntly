@@ -65,8 +65,7 @@ public class ChainSubGenericRule extends SubTable {
       }
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       if (lookupRecordsBuilder != null) {
         serializedLength = lookupRecordsBuilder.limit();
       } else {
@@ -75,8 +74,7 @@ public class ChainSubGenericRule extends SubTable {
       return serializedLength;
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       if (serializedLength == 0) {
         return 0;
       }
@@ -90,13 +88,11 @@ public class ChainSubGenericRule extends SubTable {
           + lookAheadGlyphsBuilder.writeTo(newData) + lookupRecordsBuilder.writeTo(newData);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       backtrackGlyphsBuilder = null;
       inputGlyphsBuilder = null;
       lookupRecordsBuilder = null;
@@ -137,4 +133,5 @@ public class ChainSubGenericRule extends SubTable {
       return data.length();
     }
   }
+
 }

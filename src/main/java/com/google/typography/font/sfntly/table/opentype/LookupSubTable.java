@@ -25,8 +25,7 @@ abstract class LookupSubTable extends OTSubTable {
     super(data, dataIsCanonical);
   }
 
-  // @Override
-  // private abstract Builder<? extends LookupSubTable> builder();
+  // @Override // private abstract Builder<? extends LookupSubTable> builder();
 
   protected abstract LookupType lookupType();
 
@@ -42,4 +41,5 @@ abstract class LookupSubTable extends OTSubTable {
 
     protected abstract LookupType lookupType();
   }
+
 }

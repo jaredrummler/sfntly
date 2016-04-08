@@ -46,13 +46,12 @@ final class TagOffsetRecordList extends RecordList<TagOffsetRecord> {
     return null;
   }
 
-  @Override
-  protected TagOffsetRecord getRecordAt(ReadableFontData data, int offset) {
+  @Override protected TagOffsetRecord getRecordAt(ReadableFontData data, int offset) {
     return new TagOffsetRecord(data, offset);
   }
 
-  @Override
-  protected int recordSize() {
+  @Override protected int recordSize() {
     return TagOffsetRecord.RECORD_SIZE;
   }
+
 }

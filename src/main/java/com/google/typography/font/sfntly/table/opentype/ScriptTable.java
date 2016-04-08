@@ -69,13 +69,11 @@ public class ScriptTable extends TagOffsetsTable<LangSysTable> {
     return map;
   }
 
-  @Override
-  protected LangSysTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected LangSysTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new LangSysTable(data, dataIsCanonical);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -95,24 +93,20 @@ public class ScriptTable extends TagOffsetsTable<LangSysTable> {
       }
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LangSysTable> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<LangSysTable> createSubTableBuilder(
         ReadableFontData data, int tag, boolean dataIsCanonical) {
       return new LangSysTable.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LangSysTable> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<LangSysTable> createSubTableBuilder() {
       return new LangSysTable.Builder();
     }
 
-    @Override
-    protected ScriptTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected ScriptTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new ScriptTable(data, base, dataIsCanonical);
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       int size = super.subDataSizeToSerialize();
       if (defLangSysBuilder != null) {
         size += defLangSysBuilder.subDataSizeToSerialize();
@@ -120,8 +114,7 @@ public class ScriptTable extends TagOffsetsTable<LangSysTable> {
       return size;
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       int byteCount = super.subSerialize(newData);
       if (defLangSysBuilder != null) {
         byteCount += defLangSysBuilder.subSerialize(newData.slice(byteCount));
@@ -129,20 +122,18 @@ public class ScriptTable extends TagOffsetsTable<LangSysTable> {
       return byteCount;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       super.subDataSet();
       defLangSysBuilder = null;
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(DEFAULT_LANG_SYS_INDEX, NO_DEFAULT_LANG_SYS);
     }
   }
+
 }

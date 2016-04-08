@@ -476,8 +476,7 @@ public class Rule {
     return sb.toString();
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder();
     if (backtrack != null && backtrack.size() > 0) {
       sb.append(backtrack.toString());
@@ -493,8 +492,7 @@ public class Rule {
     return sb.toString();
   }
 
-  @Override
-  public boolean equals(Object o) {
+  @Override public boolean equals(Object o) {
     if (o == this) {
       return true;
     }
@@ -521,8 +519,7 @@ public class Rule {
     return true;
   }
 
-  @Override
-  public int hashCode() {
+  @Override public int hashCode() {
     return hashCode;
   }
 
@@ -533,4 +530,5 @@ public class Rule {
     }
     return hashCode;
   }
+
 }

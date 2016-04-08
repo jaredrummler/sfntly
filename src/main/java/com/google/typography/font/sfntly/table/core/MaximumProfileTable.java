@@ -147,8 +147,7 @@ public final class MaximumProfileTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected MaximumProfileTable subBuildTable(ReadableFontData data) {
+    @Override protected MaximumProfileTable subBuildTable(ReadableFontData data) {
       return new MaximumProfileTable(this.header(), data);
     }
 
@@ -267,4 +266,5 @@ public final class MaximumProfileTable extends Table {
       this.internalWriteData().writeUShort(Offset.maxComponentDepth.offset, maxComponentDepth);
     }
   }
+
 }

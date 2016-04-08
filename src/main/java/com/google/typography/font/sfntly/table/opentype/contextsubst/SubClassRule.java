@@ -43,9 +43,9 @@ public class SubClassRule extends DoubleRecordTable {
       super(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected SubClassRule subBuildTable(ReadableFontData data) {
+    @Override protected SubClassRule subBuildTable(ReadableFontData data) {
       return new SubClassRule(data, 0, true);
     }
   }
+
 }

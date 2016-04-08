@@ -42,8 +42,7 @@ public abstract class RecordsTable<R extends Record> extends HeaderTable impleme
     recordList = records;
   }
 
-  @Override
-  public Iterator<R> iterator() {
+  @Override public Iterator<R> iterator() {
     return recordList.iterator();
   }
 
@@ -101,8 +100,7 @@ public abstract class RecordsTable<R extends Record> extends HeaderTable impleme
     // ////////////////////////////////////
     // overriden methods
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       if (records != null) {
         serializedLength = records.limit();
       } else {
@@ -111,8 +109,7 @@ public abstract class RecordsTable<R extends Record> extends HeaderTable impleme
       return serializedLength;
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       if (serializedLength == 0) {
         return 0;
       }
@@ -124,18 +121,15 @@ public abstract class RecordsTable<R extends Record> extends HeaderTable impleme
       return records.writeTo(newData);
     }
 
-    @Override
-    public T subBuildTable(ReadableFontData data) {
+    @Override public T subBuildTable(ReadableFontData data) {
       return readTable(data, 0, true);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       records = null;
     }
 
@@ -176,4 +170,5 @@ public abstract class RecordsTable<R extends Record> extends HeaderTable impleme
       return data.length();
     }
   }
+
 }

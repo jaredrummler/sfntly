@@ -35,10 +35,10 @@ final class RangeRecord implements Record {
     this.property = data.readUShort(base + PROPERTY_OFFSET);
   }
 
-  @Override
-  public int writeTo(WritableFontData newData, int base) {
+  @Override public int writeTo(WritableFontData newData, int base) {
     newData.writeUShort(base + START_OFFSET, start);
     newData.writeUShort(base + END_OFFSET, end);
     return RECORD_SIZE;
   }
+
 }

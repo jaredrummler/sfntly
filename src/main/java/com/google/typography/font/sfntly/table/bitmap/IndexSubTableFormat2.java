@@ -46,19 +46,16 @@ public final class IndexSubTableFormat2 extends IndexSubTable {
         BigGlyphMetrics.Offset.metricsLength.offset));
   }
 
-  @Override
-  public int numGlyphs() {
+  @Override public int numGlyphs() {
     return this.lastGlyphIndex() - this.firstGlyphIndex() + 1;
   }
 
-  @Override
-  public int glyphStartOffset(int glyphId) {
+  @Override public int glyphStartOffset(int glyphId) {
     int loca = this.checkGlyphRange(glyphId);
     return loca * this.imageSize;
   }
 
-  @Override
-  public int glyphLength(int glyphId) {
+  @Override public int glyphLength(int glyphId) {
     this.checkGlyphRange(glyphId);
     return this.imageSize;
   }
@@ -101,19 +98,16 @@ public final class IndexSubTableFormat2 extends IndexSubTable {
       super(data, firstGlyphIndex, lastGlyphIndex);
     }
 
-    @Override
-    public int numGlyphs() {
+    @Override public int numGlyphs() {
       return this.lastGlyphIndex() - this.firstGlyphIndex() + 1;
     }
 
-    @Override
-    public int glyphStartOffset(int glyphId) {
+    @Override public int glyphStartOffset(int glyphId) {
       int loca = super.checkGlyphRange(glyphId);
       return loca * this.imageSize();
     }
 
-    @Override
-    public int glyphLength(int glyphId) {
+    @Override public int glyphLength(int glyphId) {
       super.checkGlyphRange(glyphId);
       return this.imageSize();
     }
@@ -144,16 +138,14 @@ public final class IndexSubTableFormat2 extends IndexSubTable {
         this.glyphId = Builder.this.firstGlyphIndex();
       }
 
-      @Override
-      public boolean hasNext() {
+      @Override public boolean hasNext() {
         if (this.glyphId <= Builder.this.lastGlyphIndex()) {
           return true;
         }
         return false;
       }
 
-      @Override
-      public BitmapGlyphInfo next() {
+      @Override public BitmapGlyphInfo next() {
         if (!hasNext()) {
           throw new NoSuchElementException("No more characters to iterate.");
         }
@@ -166,39 +158,32 @@ public final class IndexSubTableFormat2 extends IndexSubTable {
         return info;
       }
 
-      @Override
-      public void remove() {
+      @Override public void remove() {
         throw new UnsupportedOperationException("Unable to remove a glyph info.");
       }
     }
 
-    @Override
-    Iterator<BitmapGlyphInfo> iterator() {
+    @Override Iterator<BitmapGlyphInfo> iterator() {
       return new BitmapGlyphInfoIterator();
     }
 
-    @Override
-    protected IndexSubTableFormat2 subBuildTable(ReadableFontData data) {
+    @Override protected IndexSubTableFormat2 subBuildTable(ReadableFontData data) {
       return new IndexSubTableFormat2(data, this.firstGlyphIndex(), this.lastGlyphIndex());
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.revert();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return Offset.indexSubTable2Length.offset;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       int size = super.serializeIndexSubHeader(newData);
       if (this.metrics == null) {
         size += this.internalReadData().slice(size).copyTo(newData.slice(size));
@@ -209,4 +194,5 @@ public final class IndexSubTableFormat2 extends IndexSubTable {
       return size;
     }
   }
+
 }

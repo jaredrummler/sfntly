@@ -48,8 +48,7 @@ public final class CMapFormat8 extends CMap {
             + Offset.format8Group_endCharCode.offset);
   }
 
-  @Override
-  public int glyphId(int character) {
+  @Override public int glyphId(int character) {
     return this.readFontData().searchULong(Offset.format8Groups.offset
             + Offset.format8Group_startCharCode.offset,
         Offset.format8Group_structLength.offset,
@@ -59,13 +58,11 @@ public final class CMapFormat8 extends CMap {
         character);
   }
 
-  @Override
-  public int language() {
+  @Override public int language() {
     return this.data.readULongAsInt(Offset.format8Language.offset);
   }
 
-  @Override
-  public Iterator<Integer> iterator() {
+  @Override public Iterator<Integer> iterator() {
     return new CharacterIterator();
   }
 
@@ -83,8 +80,7 @@ public final class CMapFormat8 extends CMap {
       firstCharInGroup = -1;
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (nextCharSet == true) {
         return true;
       }
@@ -107,8 +103,7 @@ public final class CMapFormat8 extends CMap {
       return false;
     }
 
-    @Override
-    public Integer next() {
+    @Override public Integer next() {
       if (!nextCharSet) {
         if (!hasNext()) {
           throw new NoSuchElementException("No more characters to iterate.");
@@ -118,8 +113,7 @@ public final class CMapFormat8 extends CMap {
       return nextChar;
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException("Unable to remove a character from cmap.");
     }
   }
@@ -138,9 +132,9 @@ public final class CMapFormat8 extends CMap {
           cmapId);
     }
 
-    @Override
-    protected CMapFormat8 subBuildTable(ReadableFontData data) {
+    @Override protected CMapFormat8 subBuildTable(ReadableFontData data) {
       return new CMapFormat8(data, this.cmapId());
     }
   }
+
 }

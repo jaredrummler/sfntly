@@ -58,19 +58,16 @@ public abstract class TagOffsetsTable<S extends SubTable> extends HeaderTable
     return subTableForRecord(record);
   }
 
-  @Override
-  public Iterator<S> iterator() {
+  @Override public Iterator<S> iterator() {
     return new Iterator<S>() {
 
       private Iterator<TagOffsetRecord> recordIterator = recordList.iterator();
 
-      @Override
-      public boolean hasNext() {
+      @Override public boolean hasNext() {
         return recordIterator.hasNext();
       }
 
-      @Override
-      public S next() {
+      @Override public S next() {
         if (!hasNext()) {
           throw new NoSuchElementException();
         }
@@ -78,8 +75,7 @@ public abstract class TagOffsetsTable<S extends SubTable> extends HeaderTable
         return subTableForRecord(record);
       }
 
-      @Override
-      public void remove() {
+      @Override public void remove() {
         throw new UnsupportedOperationException();
       }
     };
@@ -127,8 +123,7 @@ public abstract class TagOffsetsTable<S extends SubTable> extends HeaderTable
       }
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       if (builders != null) {
         computeSizeFromBuilders();
       } else {
@@ -138,8 +133,7 @@ public abstract class TagOffsetsTable<S extends SubTable> extends HeaderTable
       return serializedLength;
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       if (serializedLength == 0) {
         return 0;
       }
@@ -151,18 +145,15 @@ public abstract class TagOffsetsTable<S extends SubTable> extends HeaderTable
       return serializeFromData(newData.slice(writtenBytes));
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       builders = null;
     }
 
-    @Override
-    public T subBuildTable(ReadableFontData data) {
+    @Override public T subBuildTable(ReadableFontData data) {
       return readTable(data, 0, true);
     }
 
@@ -301,4 +292,5 @@ public abstract class TagOffsetsTable<S extends SubTable> extends HeaderTable
       return createSubTableBuilder(newData, tag, dataIsCanonical);
     }
   }
+
 }

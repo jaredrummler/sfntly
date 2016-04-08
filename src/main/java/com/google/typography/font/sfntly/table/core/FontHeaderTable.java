@@ -455,8 +455,7 @@ public final class FontHeaderTable extends Table {
       data.setCheckSumRanges(FontHeaderTable.CHECKSUM_RANGES);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.dataChanged()) {
         ReadableFontData data = this.internalReadData();
         data.setCheckSumRanges(FontHeaderTable.CHECKSUM_RANGES);
@@ -471,8 +470,7 @@ public final class FontHeaderTable extends Table {
       return super.subReadyToSerialize();
     }
 
-    @Override
-    protected FontHeaderTable subBuildTable(ReadableFontData data) {
+    @Override protected FontHeaderTable subBuildTable(ReadableFontData data) {
       return new FontHeaderTable(this.header(), data);
     }
 
@@ -678,4 +676,5 @@ public final class FontHeaderTable extends Table {
       this.internalWriteData().writeShort(Offset.glyphDataFormat.offset, format);
     }
   }
+
 }

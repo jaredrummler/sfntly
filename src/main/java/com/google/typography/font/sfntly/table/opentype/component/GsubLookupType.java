@@ -26,13 +26,11 @@ public enum GsubLookupType implements LookupType {
   GSUB_EXTENSION,
   GSUB_REVERSE_CHAINING_CONTEXTUAL_SINGLE;
 
-  @Override
-  public int typeNum() {
+  @Override public int typeNum() {
     return ordinal() + 1;
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     return super.toString().toLowerCase();
   }
 

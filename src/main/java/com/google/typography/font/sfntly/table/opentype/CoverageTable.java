@@ -91,31 +91,27 @@ public class CoverageTable extends SubstSubtable {
       this(table.readFontData(), table.dataIsCanonical);
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return super.subDataSizeToSerialize() + arrayBuilder.subDataSizeToSerialize();
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       int newOffset = super.subSerialize(newData);
       return arrayBuilder.subSerialize(newData.slice(newOffset));
     }
 
-    @Override
-    protected CoverageTable subBuildTable(ReadableFontData data) {
+    @Override protected CoverageTable subBuildTable(ReadableFontData data) {
       return new CoverageTable(data, 0, false);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return super.subReadyToSerialize();
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       super.subDataSet();
       arrayBuilder.subDataSet();
     }
   }
+
 }

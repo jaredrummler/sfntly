@@ -33,18 +33,15 @@ public final class CMapFormat14 extends CMap {
     super(data, CMapFormat.Format14.value, cmapId);
   }
 
-  @Override
-  public int glyphId(int character) {
+  @Override public int glyphId(int character) {
     return CMapTable.NOTDEF;
   }
 
-  @Override
-  public int language() {
+  @Override public int language() {
     return 0;
   }
 
-  @Override
-  public Iterator<Integer> iterator() {
+  @Override public Iterator<Integer> iterator() {
     return null;
   }
 
@@ -62,9 +59,9 @@ public final class CMapFormat14 extends CMap {
           CMapFormat.Format14, cmapId);
     }
 
-    @Override
-    protected CMapFormat14 subBuildTable(ReadableFontData data) {
+    @Override protected CMapFormat14 subBuildTable(ReadableFontData data) {
       return new CMapFormat14(data, this.cmapId());
     }
   }
+
 }

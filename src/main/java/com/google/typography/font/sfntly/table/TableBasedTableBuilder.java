@@ -62,28 +62,23 @@ public abstract class TableBasedTableBuilder<T extends Table> extends Table.Buil
     return this.table;
   }
 
-  @Override
-  protected void subDataSet() {
+  @Override protected void subDataSet() {
     this.table = null;
   }
 
-  @Override
-  protected int subDataSizeToSerialize() {
+  @Override protected int subDataSizeToSerialize() {
     return 0;
   }
 
-  @Override
-  protected boolean subReadyToSerialize() {
+  @Override protected boolean subReadyToSerialize() {
     return true;
   }
 
-  @Override
-  protected int subSerialize(WritableFontData newData) {
+  @Override protected int subSerialize(WritableFontData newData) {
     return 0;
   }
 
-  @Override
-  public T build() {
+  @Override public T build() {
     if (!this.subReadyToSerialize()) {
       return null;
     }
@@ -91,4 +86,5 @@ public abstract class TableBasedTableBuilder<T extends Table> extends Table.Buil
     this.notifyPostTableBuild(table);
     return table;
   }
+
 }

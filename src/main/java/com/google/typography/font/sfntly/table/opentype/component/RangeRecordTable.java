@@ -24,13 +24,11 @@ public class RangeRecordTable extends RecordsTable<RangeRecord> {
     super(data, base, dataIsCanonical);
   }
 
-  @Override
-  protected RecordList<RangeRecord> createRecordList(ReadableFontData data) {
+  @Override protected RecordList<RangeRecord> createRecordList(ReadableFontData data) {
     return new RangeRecordList(data);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return 0;
   }
 
@@ -40,29 +38,26 @@ public class RangeRecordTable extends RecordsTable<RangeRecord> {
       super(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected RangeRecordTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected RangeRecordTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new RangeRecordTable(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected RecordList<RangeRecord> readRecordList(ReadableFontData data, int base) {
+    @Override protected RecordList<RangeRecord> readRecordList(ReadableFontData data, int base) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new RangeRecordList(data);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return 0;
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
   }
+
 }

@@ -441,8 +441,7 @@ abstract class ByteArray<T extends ByteArray<T>> {
     return sb.toString();
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     return this.toString(0, 0);
   }
 

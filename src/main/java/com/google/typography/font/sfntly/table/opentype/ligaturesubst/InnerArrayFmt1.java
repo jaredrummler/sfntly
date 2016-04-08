@@ -35,8 +35,7 @@ public class InnerArrayFmt1 extends OffsetRecordTable<LigatureSet> {
     coverage = new CoverageTable(data.slice(coverageOffset), 0, dataIsCanonical);
   }
 
-  @Override
-  public LigatureSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override public LigatureSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new LigatureSet(data, 0, dataIsCanonical);
   }
 
@@ -54,40 +53,34 @@ public class InnerArrayFmt1 extends OffsetRecordTable<LigatureSet> {
       super(table);
     }
 
-    @Override
-    protected InnerArrayFmt1 readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected InnerArrayFmt1 readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new InnerArrayFmt1(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LigatureSet> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<LigatureSet> createSubTableBuilder() {
       return new LigatureSet.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LigatureSet> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<LigatureSet> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new LigatureSet.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LigatureSet> createSubTableBuilder(LigatureSet subTable) {
+    @Override protected VisibleSubTable.Builder<LigatureSet> createSubTableBuilder(LigatureSet subTable) {
       return new LigatureSet.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(COVERAGE_INDEX, COVERAGE_DEFAULT);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return FIELD_COUNT;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
+
 }

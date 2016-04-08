@@ -108,19 +108,16 @@ public class FontOutputStream extends OutputStream {
     return this.position;
   }
 
-  @Override
-  public void write(int b) throws IOException {
+  @Override public void write(int b) throws IOException {
     out.write(b);
     this.position++;
   }
 
-  @Override
-  public void write(byte[] b) throws IOException {
+  @Override public void write(byte[] b) throws IOException {
     this.write(b, 0, b.length);
   }
 
-  @Override
-  public void write(byte[] b, int off, int len) throws IOException {
+  @Override public void write(byte[] b, int off, int len) throws IOException {
     if (off < 0 || len < 0 || off + len < 0 || off + len > b.length) {
       throw new IndexOutOfBoundsException();
     }
@@ -222,4 +219,5 @@ public class FontOutputStream extends OutputStream {
     this.writeULong((date >> 32) & 0xffffffff);
     this.writeULong(date & 0xffffffff);
   }
+
 }

@@ -48,16 +48,14 @@ public class CompositeBitmapGlyph extends BitmapGlyph {
       return this.yOffset;
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + glyphCode;
       return result;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
       if (this == obj) {
         return true;
       }
@@ -125,9 +123,9 @@ public class CompositeBitmapGlyph extends BitmapGlyph {
       super(data, format);
     }
 
-    @Override
-    protected CompositeBitmapGlyph subBuildTable(ReadableFontData data) {
+    @Override protected CompositeBitmapGlyph subBuildTable(ReadableFontData data) {
       return new CompositeBitmapGlyph(data, this.format());
     }
   }
+
 }

@@ -51,8 +51,7 @@ public abstract class FontDataTable {
     return this.data;
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     return this.data.toString();
   }
 
@@ -298,4 +297,5 @@ public abstract class FontDataTable {
      */
     protected abstract T subBuildTable(ReadableFontData data);
   }
+
 }

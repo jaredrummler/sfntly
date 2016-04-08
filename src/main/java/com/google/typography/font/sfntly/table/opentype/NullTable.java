@@ -47,28 +47,24 @@ public final class NullTable extends SubstSubtable {
     private Builder(NullTable table) {
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return NullTable.RECORD_SIZE;
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       return NullTable.RECORD_SIZE;
     }
 
-    @Override
-    public NullTable subBuildTable(ReadableFontData data) {
+    @Override public NullTable subBuildTable(ReadableFontData data) {
       return new NullTable(data);
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
   }
+
 }

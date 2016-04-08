@@ -25,8 +25,7 @@ public class SubClassSet extends SubGenericRuleSet<SubClassRule> {
     super(data, base, dataIsCanonical);
   }
 
-  @Override
-  protected SubClassRule readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected SubClassRule readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new SubClassRule(data, base, dataIsCanonical);
   }
 
@@ -44,25 +43,22 @@ public class SubClassSet extends SubGenericRuleSet<SubClassRule> {
       super(data, dataIsCanonical);
     }
 
-    @Override
-    protected SubClassSet readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected SubClassSet readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new SubClassSet(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubClassRule> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<SubClassRule> createSubTableBuilder() {
       return new SubClassRule.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubClassRule> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<SubClassRule> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new SubClassRule.Builder(data, 0, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubClassRule> createSubTableBuilder(SubClassRule subTable) {
+    @Override protected VisibleSubTable.Builder<SubClassRule> createSubTableBuilder(SubClassRule subTable) {
       return new SubClassRule.Builder(subTable);
     }
   }
+
 }

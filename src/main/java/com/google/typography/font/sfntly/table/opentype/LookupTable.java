@@ -70,8 +70,7 @@ public class LookupTable extends OffsetRecordTable<SubstSubtable> {
     return GsubLookupType.forTypeNum(getField(LOOKUP_FLAG_INDEX));
   }
 
-  @Override
-  protected SubstSubtable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected SubstSubtable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     int lookupType = getField(LOOKUP_TYPE_INDEX);
     GsubLookupType gsubLookupType = GsubLookupType.forTypeNum(lookupType);
     switch (gsubLookupType) {
@@ -98,8 +97,7 @@ public class LookupTable extends OffsetRecordTable<SubstSubtable> {
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -125,36 +123,31 @@ public class LookupTable extends OffsetRecordTable<SubstSubtable> {
       super(table);
     }
 
-    @Override
-    protected LookupTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected LookupTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new LookupTable(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubstSubtable> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<SubstSubtable> createSubTableBuilder() {
       return new LigatureSubst.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubstSubtable> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<SubstSubtable> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new LigatureSubst.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubstSubtable> createSubTableBuilder(SubstSubtable subTable) {
+    @Override protected VisibleSubTable.Builder<SubstSubtable> createSubTableBuilder(SubstSubtable subTable) {
       return new LigatureSubst.Builder(subTable);
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
 
-    @Override
-    public void initFields() {
+    @Override public void initFields() {
       setField(LOOKUP_TYPE_INDEX, LOOKUP_TYPE_DEFAULT);
       setField(LOOKUP_FLAG_INDEX, LOOKUP_FLAG_INDEX);
     }
   }
+
 }

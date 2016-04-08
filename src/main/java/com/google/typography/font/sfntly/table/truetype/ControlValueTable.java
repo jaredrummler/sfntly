@@ -104,9 +104,9 @@ public final class ControlValueTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected ControlValueTable subBuildTable(ReadableFontData data) {
+    @Override protected ControlValueTable subBuildTable(ReadableFontData data) {
       return new ControlValueTable(this.header(), data);
     }
   }
+
 }

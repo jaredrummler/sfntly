@@ -24,4 +24,5 @@ public class AlternateSubst extends OneToManySubst {
   AlternateSubst(ReadableFontData data, int base, boolean dataIsCanonical) {
     super(data, base, dataIsCanonical);
   }
+
 }

@@ -96,13 +96,11 @@ public class SingleSubst extends SubstSubtable {
       fmt2Builder = new InnerArrayFmt2.Builder(ligSubst.fmt2);
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return fmt1Builder.subDataSizeToSerialize() + fmt2Builder.subDataSizeToSerialize();
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       int byteCount = fmt1Builder.subSerialize(newData);
       byteCount += fmt2Builder.subSerialize(newData.slice(byteCount));
       return byteCount;
@@ -111,20 +109,18 @@ public class SingleSubst extends SubstSubtable {
     // /////////////////////////////////
     // must implement abstract methods
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       fmt1Builder.subDataSet();
       fmt2Builder.subDataSet();
     }
 
-    @Override
-    public SingleSubst subBuildTable(ReadableFontData data) {
+    @Override public SingleSubst subBuildTable(ReadableFontData data) {
       return new SingleSubst(data, 0, true);
     }
   }
+
 }

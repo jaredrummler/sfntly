@@ -49,8 +49,7 @@ public class LigatureSubst extends SubstSubtable implements Iterable<LigatureSet
     return array.subTableAt(index);
   }
 
-  @Override
-  public Iterator<LigatureSet> iterator() {
+  @Override public Iterator<LigatureSet> iterator() {
     return array.iterator();
   }
 
@@ -92,32 +91,28 @@ public class LigatureSubst extends SubstSubtable implements Iterable<LigatureSet
     // ///////////////////////////////
     // private methods to serialize
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return arrayBuilder.subDataSizeToSerialize();
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       return arrayBuilder.subSerialize(newData);
     }
 
     // /////////////////////////////////
     // must implement abstract methods
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       arrayBuilder.subDataSet();
     }
 
-    @Override
-    public LigatureSubst subBuildTable(ReadableFontData data) {
+    @Override public LigatureSubst subBuildTable(ReadableFontData data) {
       return new LigatureSubst(data, 0, true);
     }
   }
+
 }

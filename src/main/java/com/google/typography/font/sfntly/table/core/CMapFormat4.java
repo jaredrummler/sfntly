@@ -43,8 +43,7 @@ public final class CMapFormat4 extends CMap {
     this.glyphIdArrayOffset = glyphIdArrayOffset(this.segCount);
   }
 
-  @Override
-  public int glyphId(int character) {
+  @Override public int glyphId(int character) {
     int segment = this.data.searchUShort(CMapFormat4.startCodeOffset(this.segCount),
         FontData.DataSize.USHORT.size(),
         Offset.format4EndCount.offset,
@@ -228,13 +227,11 @@ public final class CMapFormat4 extends CMap {
         this.glyphIdArrayOffset + index * FontData.DataSize.USHORT.size());
   }
 
-  @Override
-  public int language() {
+  @Override public int language() {
     return this.data.readUShort(Offset.format4Language.offset);
   }
 
-  @Override
-  public Iterator<Integer> iterator() {
+  @Override public Iterator<Integer> iterator() {
     return new CharacterIterator();
   }
 
@@ -252,8 +249,7 @@ public final class CMapFormat4 extends CMap {
       firstCharInSegment = -1;
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (nextCharSet == true) {
         return true;
       }
@@ -276,8 +272,7 @@ public final class CMapFormat4 extends CMap {
       return false;
     }
 
-    @Override
-    public Integer next() {
+    @Override public Integer next() {
       if (!nextCharSet) {
         if (!hasNext()) {
           throw new NoSuchElementException("No more characters to iterate.");
@@ -287,8 +282,7 @@ public final class CMapFormat4 extends CMap {
       return nextChar;
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException("Unable to remove a character from cmap.");
     }
   }
@@ -384,8 +378,7 @@ public final class CMapFormat4 extends CMap {
         this.idRangeOffset = idRangeOffset;
       }
 
-      @Override
-      public String toString() {
+      @Override public String toString() {
         return String.format("[0x%04x - 0x%04x, delta = 0x%04x, rangeOffset = 0x%04x]",
             this.startCount, this.endCount, this.idDelta, this.idRangeOffset);
       }
@@ -460,20 +453,17 @@ public final class CMapFormat4 extends CMap {
       this.setModelChanged();
     }
 
-    @Override
-    protected CMapFormat4 subBuildTable(ReadableFontData data) {
+    @Override protected CMapFormat4 subBuildTable(ReadableFontData data) {
       return new CMapFormat4(data, this.cmapId());
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.segments = null;
       this.glyphIdArray = null;
       super.setModelChanged(false);
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (!this.modelChanged()) {
         return super.subDataSizeToSerialize();
       }
@@ -484,8 +474,7 @@ public final class CMapFormat4 extends CMap {
       return size;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (!this.modelChanged()) {
         return super.subReadyToSerialize();
       }
@@ -496,8 +485,7 @@ public final class CMapFormat4 extends CMap {
       return false;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       if (!this.modelChanged()) {
         return super.subSerialize(newData);
       }
@@ -540,4 +528,5 @@ public final class CMapFormat4 extends CMap {
       return index;
     }
   }
+
 }

@@ -55,13 +55,11 @@ public final class IndexSubTableFormat5 extends IndexSubTable {
         Offset.indexSubTable5_bigGlyphMetrics.offset, BigGlyphMetrics.Offset.metricsLength.offset));
   }
 
-  @Override
-  public int numGlyphs() {
+  @Override public int numGlyphs() {
     return IndexSubTableFormat5.numGlyphs(this.data, 0);
   }
 
-  @Override
-  public int glyphStartOffset(int glyphId) {
+  @Override public int glyphStartOffset(int glyphId) {
     this.checkGlyphRange(glyphId);
     int loca =
         this.readFontData().searchUShort(Offset.indexSubTable5_glyphArray.offset,
@@ -72,8 +70,7 @@ public final class IndexSubTableFormat5 extends IndexSubTable {
     return loca * this.imageSize;
   }
 
-  @Override
-  public int glyphLength(int glyphId) {
+  @Override public int glyphLength(int glyphId) {
     this.checkGlyphRange(glyphId);
     return this.imageSize;
   }
@@ -137,18 +134,15 @@ public final class IndexSubTableFormat5 extends IndexSubTable {
       return this.metrics;
     }
 
-    @Override
-    public int numGlyphs() {
+    @Override public int numGlyphs() {
       return this.getGlyphArray().size();
     }
 
-    @Override
-    public int glyphLength(int glyphId) {
+    @Override public int glyphLength(int glyphId) {
       return this.imageSize();
     }
 
-    @Override
-    public int glyphStartOffset(int glyphId) {
+    @Override public int glyphStartOffset(int glyphId) {
       this.checkGlyphRange(glyphId);
       List<Integer> glyphArray = this.getGlyphArray();
       int loca = Collections.binarySearch(glyphArray, glyphId);
@@ -198,16 +192,14 @@ public final class IndexSubTableFormat5 extends IndexSubTable {
       public BitmapGlyphInfoIterator() {
       }
 
-      @Override
-      public boolean hasNext() {
+      @Override public boolean hasNext() {
         if (this.offsetIndex < Builder.this.getGlyphArray().size()) {
           return true;
         }
         return false;
       }
 
-      @Override
-      public BitmapGlyphInfo next() {
+      @Override public BitmapGlyphInfo next() {
         if (!hasNext()) {
           throw new NoSuchElementException("No more characters to iterate.");
         }
@@ -221,35 +213,29 @@ public final class IndexSubTableFormat5 extends IndexSubTable {
         return info;
       }
 
-      @Override
-      public void remove() {
+      @Override public void remove() {
         throw new UnsupportedOperationException("Unable to remove a glyph info.");
       }
     }
 
-    @Override
-    Iterator<BitmapGlyphInfo> iterator() {
+    @Override Iterator<BitmapGlyphInfo> iterator() {
       return new BitmapGlyphInfoIterator();
     }
 
-    @Override
-    protected void revert() {
+    @Override protected void revert() {
       super.revert();
       this.glyphArray = null;
     }
 
-    @Override
-    protected IndexSubTableFormat5 subBuildTable(ReadableFontData data) {
+    @Override protected IndexSubTableFormat5 subBuildTable(ReadableFontData data) {
       return new IndexSubTableFormat5(data, this.firstGlyphIndex(), this.lastGlyphIndex());
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.revert();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.glyphArray == null) {
         return this.internalReadData().length();
       }
@@ -257,16 +243,14 @@ public final class IndexSubTableFormat5 extends IndexSubTable {
           * FontData.DataSize.USHORT.size();
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.glyphArray != null) {
         return true;
       }
       return false;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       int size = super.serializeIndexSubHeader(newData);
       if (!this.modelChanged()) {
         size +=
@@ -283,4 +267,5 @@ public final class IndexSubTableFormat5 extends IndexSubTable {
       return size;
     }
   }
+
 }

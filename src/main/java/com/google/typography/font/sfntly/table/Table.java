@@ -111,8 +111,7 @@ public class Table extends FontDataTable {
     return this.header().checksum();
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("[");
     sb.append(Tag.stringValue(this.header.tag()));
@@ -144,8 +143,7 @@ public class Table extends FontDataTable {
       this(header, null);
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       return "Table Builder for - " + this.header.toString();
     }
 
@@ -161,8 +159,7 @@ public class Table extends FontDataTable {
      * Internal Interface for Table Building
      ***********************************************************************************/
 
-    @Override
-    protected void notifyPostTableBuild(T table) {
+    @Override protected void notifyPostTableBuild(T table) {
       if (this.modelChanged() || this.dataChanged()) {
         Header header = new Header(this.header().tag(), table.dataLength());
         ((Table) table).header = header;
@@ -261,4 +258,5 @@ public class Table extends FontDataTable {
       return GenericTableBuilder.createBuilder(header, tableData);
     }
   }
+
 }

@@ -95,8 +95,7 @@ public abstract class Glyph extends SubTable {
 
   protected abstract void initialize();
 
-  @Override
-  public int padding() {
+  @Override public int padding() {
     this.initialize();
     return super.padding();
   }
@@ -138,8 +137,7 @@ public abstract class Glyph extends SubTable {
 
   public abstract ReadableFontData instructions();
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     return this.toString(0);
   }
 
@@ -203,24 +201,21 @@ public abstract class Glyph extends SubTable {
       return new CompositeGlyph.CompositeGlyphBuilder(data, offset, length);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // NOP
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return this.internalReadData().length();
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return this.internalReadData().copyTo(newData);
     }
   }
+
 }

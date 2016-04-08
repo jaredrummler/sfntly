@@ -26,8 +26,7 @@ public abstract class ChainSubGenericRuleSet<T extends ChainSubGenericRule>
     super(data, base, dataIsCanonical);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return 0;
   }
 
@@ -47,13 +46,12 @@ public abstract class ChainSubGenericRuleSet<T extends ChainSubGenericRule>
       super(table);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return 0;
     }
   }
+
 }

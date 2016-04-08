@@ -54,8 +54,7 @@ public final class CMapFormat12 extends CMap {
             + Offset.format12_startGlyphId.offset);
   }
 
-  @Override
-  public int glyphId(int character) {
+  @Override public int glyphId(int character) {
     int group =
         this.data.searchULong(Offset.format12Groups.offset + Offset.format12_startCharCode.offset,
             Offset.format12Groups_structLength.offset,
@@ -69,13 +68,11 @@ public final class CMapFormat12 extends CMap {
     return groupStartGlyph(group) + (character - groupStartChar(group));
   }
 
-  @Override
-  public int language() {
+  @Override public int language() {
     return this.data.readULongAsInt(Offset.format12Language.offset);
   }
 
-  @Override
-  public Iterator<Integer> iterator() {
+  @Override public Iterator<Integer> iterator() {
     return new CharacterIterator();
   }
 
@@ -93,8 +90,7 @@ public final class CMapFormat12 extends CMap {
       nextSet = true;
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (nextSet) {
         return true;
       }
@@ -116,8 +112,7 @@ public final class CMapFormat12 extends CMap {
       return false;
     }
 
-    @Override
-    public Integer next() {
+    @Override public Integer next() {
       if (!this.nextSet) {
         if (!hasNext()) {
           throw new NoSuchElementException("No more characters to iterate.");
@@ -127,8 +122,7 @@ public final class CMapFormat12 extends CMap {
       return nextChar;
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException("Unable to remove a character from cmap.");
     }
   }
@@ -147,9 +141,9 @@ public final class CMapFormat12 extends CMap {
           CMapFormat.Format12, cmapId);
     }
 
-    @Override
-    protected CMapFormat12 subBuildTable(ReadableFontData data) {
+    @Override protected CMapFormat12 subBuildTable(ReadableFontData data) {
       return new CMapFormat12(data, this.cmapId());
     }
   }
+
 }

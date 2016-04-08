@@ -32,10 +32,10 @@ final class SubstLookupRecord implements Record {
     this.lookupListIndex = data.readUShort(base + LOOKUP_LIST_INDEX_OFFSET);
   }
 
-  @Override
-  public int writeTo(WritableFontData newData, int base) {
+  @Override public int writeTo(WritableFontData newData, int base) {
     newData.writeUShort(base + SEQUENCE_INDEX_OFFSET, sequenceIndex);
     newData.writeUShort(base + LOOKUP_LIST_INDEX_OFFSET, lookupListIndex);
     return RECORD_SIZE;
   }
+
 }

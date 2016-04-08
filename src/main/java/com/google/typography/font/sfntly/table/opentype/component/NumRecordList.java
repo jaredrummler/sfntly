@@ -63,13 +63,12 @@ public class NumRecordList extends RecordList<NumRecord> {
     return false;
   }
 
-  @Override
-  protected NumRecord getRecordAt(ReadableFontData data, int offset) {
+  @Override protected NumRecord getRecordAt(ReadableFontData data, int offset) {
     return new NumRecord(data, offset);
   }
 
-  @Override
-  protected int recordSize() {
+  @Override protected int recordSize() {
     return NumRecord.RECORD_SIZE;
   }
+
 }

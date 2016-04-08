@@ -25,8 +25,7 @@ public abstract class SubGenericRuleSet<T extends DoubleRecordTable> extends Off
     super(data, base, dataIsCanonical);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return 0;
   }
 
@@ -46,13 +45,12 @@ public abstract class SubGenericRuleSet<T extends DoubleRecordTable> extends Off
       super(table);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return 0;
     }
   }
+
 }

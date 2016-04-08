@@ -172,4 +172,5 @@ public abstract class SubTable extends FontDataTable {
   protected void setPadding(int padding) {
     this.padding = padding;
   }
+
 }

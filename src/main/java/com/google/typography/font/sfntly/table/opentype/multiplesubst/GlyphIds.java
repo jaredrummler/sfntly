@@ -36,13 +36,11 @@ public class GlyphIds extends OffsetRecordTable<NumRecordTable> {
     coverage = new CoverageTable(data.slice(coverageOffset), 0, dataIsCanonical);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
-  @Override
-  public NumRecordTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override public NumRecordTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new NumRecordTable(data, 0, dataIsCanonical);
   }
 
@@ -60,35 +58,30 @@ public class GlyphIds extends OffsetRecordTable<NumRecordTable> {
       super(table);
     }
 
-    @Override
-    protected GlyphIds readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected GlyphIds readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new GlyphIds(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(COVERAGE_INDEX, COVERAGE_DEFAULT);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return FIELD_COUNT;
     }
 
-    @Override
-    protected VisibleSubTable.Builder<NumRecordTable> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<NumRecordTable> createSubTableBuilder() {
       return new NumRecordTable.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<NumRecordTable> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<NumRecordTable> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new NumRecordTable.Builder(data, 0, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<NumRecordTable> createSubTableBuilder(NumRecordTable subTable) {
+    @Override protected VisibleSubTable.Builder<NumRecordTable> createSubTableBuilder(NumRecordTable subTable) {
       return new NumRecordTable.Builder(subTable);
     }
   }
+
 }

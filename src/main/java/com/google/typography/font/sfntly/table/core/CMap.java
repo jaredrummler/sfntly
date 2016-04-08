@@ -159,35 +159,30 @@ public abstract class CMap extends SubTable implements Iterable<Integer> {
       this.maxCharacter = end;
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (character < maxCharacter) {
         return true;
       }
       return false;
     }
 
-    @Override
-    public Integer next() {
+    @Override public Integer next() {
       if (!hasNext()) {
         throw new NoSuchElementException("No more characters to iterate.");
       }
       return this.character++;
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException("Unable to remove a character from cmap.");
     }
   }
 
-  @Override
-  public int hashCode() {
+  @Override public int hashCode() {
     return this.cmapId.hashCode();
   }
 
-  @Override
-  public boolean equals(Object obj) {
+  @Override public boolean equals(Object obj) {
     if (this == obj) {
       return true;
     }
@@ -225,8 +220,7 @@ public abstract class CMap extends SubTable implements Iterable<Integer> {
    */
   public abstract int glyphId(int character);
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder builder = new StringBuilder();
     builder.append("cmap: ");
     builder.append(this.cmapId());
@@ -310,23 +304,19 @@ public abstract class CMap extends SubTable implements Iterable<Integer> {
       this.cmapId = cmapId;
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // NOP
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return this.internalReadData().length();
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return this.internalReadData().copyTo(newData);
     }
 
@@ -376,9 +366,9 @@ public abstract class CMap extends SubTable implements Iterable<Integer> {
       return null;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       return String.format("%s, format = %s", this.cmapId(), this.format());
     }
   }
+
 }

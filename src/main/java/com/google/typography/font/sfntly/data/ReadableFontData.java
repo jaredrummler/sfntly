@@ -154,8 +154,7 @@ public class ReadableFontData extends FontData {
    *     the number of bytes in the slice
    * @return a slice of the original FontData
    */
-  @Override
-  public ReadableFontData slice(int offset, int length) {
+  @Override public ReadableFontData slice(int offset, int length) {
     if (offset < 0 || (offset + length) > this.size()) {
       throw new IndexOutOfBoundsException("Attempt to bind data outside of its limits.");
     }
@@ -171,8 +170,7 @@ public class ReadableFontData extends FontData {
    *     the start of the slice
    * @return a slice of the original FontData
    */
-  @Override
-  public ReadableFontData slice(int offset) {
+  @Override public ReadableFontData slice(int offset) {
     if (offset < 0 || offset > this.size()) {
       throw new IndexOutOfBoundsException("Attempt to bind data outside of its limits.");
     }
@@ -195,8 +193,7 @@ public class ReadableFontData extends FontData {
     return sb.toString();
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     return toString(0);
   }
 
@@ -750,4 +747,5 @@ public class ReadableFontData extends FontData {
     }
     return -1;
   }
+
 }

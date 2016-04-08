@@ -139,8 +139,7 @@ public final class HorizontalHeaderTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected HorizontalHeaderTable subBuildTable(ReadableFontData data) {
+    @Override protected HorizontalHeaderTable subBuildTable(ReadableFontData data) {
       return new HorizontalHeaderTable(this.header(), data);
     }
 
@@ -249,4 +248,5 @@ public final class HorizontalHeaderTable extends Table {
       this.internalWriteData().writeUShort(Offset.numberOfHMetrics.offset, version);
     }
   }
+
 }

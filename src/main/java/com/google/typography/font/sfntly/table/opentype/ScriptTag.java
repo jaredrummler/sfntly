@@ -166,4 +166,5 @@ public enum ScriptTag {
     }
     throw new IllegalArgumentException(Tag.stringValue(tag));
   }
+
 }

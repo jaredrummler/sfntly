@@ -33,9 +33,9 @@ public final class NumRecord implements Record {
     this.value = num;
   }
 
-  @Override
-  public int writeTo(WritableFontData newData, int base) {
+  @Override public int writeTo(WritableFontData newData, int base) {
     newData.writeUShort(base + TAG_POS, value);
     return RECORD_SIZE;
   }
+
 }

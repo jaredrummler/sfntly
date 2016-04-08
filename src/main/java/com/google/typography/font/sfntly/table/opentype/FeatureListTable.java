@@ -26,8 +26,7 @@ public class FeatureListTable extends TagOffsetsTable<FeatureTable> {
     super(data, dataIsCanonical);
   }
 
-  @Override
-  protected FeatureTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected FeatureTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new FeatureTable(data, dataIsCanonical);
   }
 
@@ -41,35 +40,30 @@ public class FeatureListTable extends TagOffsetsTable<FeatureTable> {
       super(data, 0, false);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<FeatureTable> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<FeatureTable> createSubTableBuilder(
         ReadableFontData data, int tag, boolean dataIsCanonical) {
       return new FeatureTable.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<FeatureTable> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<FeatureTable> createSubTableBuilder() {
       return new FeatureTable.Builder();
     }
 
-    @Override
-    protected FeatureListTable readTable(
+    @Override protected FeatureListTable readTable(
         ReadableFontData data, int baseUnused, boolean dataIsCanonical) {
       return new FeatureListTable(data, dataIsCanonical);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return 0;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return 0;
   }
+
 }

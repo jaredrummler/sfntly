@@ -89,13 +89,11 @@ public class ClassDefTable extends SubstSubtable {
       this(table.readFontData(), table.dataIsCanonical);
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return super.subDataSizeToSerialize() + arrayBuilder.subDataSizeToSerialize();
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       int newOffset = super.subSerialize(newData);
       return arrayBuilder.subSerialize(newData.slice(newOffset));
     }
@@ -103,20 +101,18 @@ public class ClassDefTable extends SubstSubtable {
     // ///////////////////
     // Overriden methods
 
-    @Override
-    public ClassDefTable subBuildTable(ReadableFontData data) {
+    @Override public ClassDefTable subBuildTable(ReadableFontData data) {
       return new ClassDefTable(data, 0, false);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return super.subReadyToSerialize() && true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       super.subDataSet();
       arrayBuilder.subDataSet();
     }
   }
+
 }

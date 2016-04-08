@@ -134,30 +134,26 @@ public class EbscTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected EbscTable subBuildTable(ReadableFontData data) {
+    @Override protected EbscTable subBuildTable(ReadableFontData data) {
       return new EbscTable(this.header(), data);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // NOP
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return 0;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return false;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return 0;
     }
 
   }
+
 }

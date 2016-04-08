@@ -207,18 +207,15 @@ public final class EbdtTable extends SubTableContainerTable {
       return glyphBuilderList;
     }
 
-    @Override
-    protected EbdtTable subBuildTable(ReadableFontData data) {
+    @Override protected EbdtTable subBuildTable(ReadableFontData data) {
       return new EbdtTable(this.header(), data);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.revert();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.glyphBuilders == null || this.glyphBuilders.size() == 0) {
         return 0;
       }
@@ -239,16 +236,14 @@ public final class EbdtTable extends SubTableContainerTable {
       return (fixed ? 1 : -1) * size;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.glyphBuilders == null) {
         return false;
       }
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       int size = 0;
       size += newData.writeFixed(Offset.version.offset, this.version);
 
@@ -264,4 +259,5 @@ public final class EbdtTable extends SubTableContainerTable {
       return size;
     }
   }
+
 }

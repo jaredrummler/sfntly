@@ -39,8 +39,7 @@ public final class CMapFormat6 extends CMap {
     this.entryCount = this.data.readUShort(Offset.format6EntryCount.offset);
   }
 
-  @Override
-  public int glyphId(int character) {
+  @Override public int glyphId(int character) {
     if (character < this.firstCode || character >= this.firstCode + this.entryCount) {
       return CMapTable.NOTDEF;
     }
@@ -48,13 +47,11 @@ public final class CMapFormat6 extends CMap {
         * FontData.DataSize.USHORT.size());
   }
 
-  @Override
-  public int language() {
+  @Override public int language() {
     return this.data.readUShort(Offset.format6Language.offset);
   }
 
-  @Override
-  public Iterator<Integer> iterator() {
+  @Override public Iterator<Integer> iterator() {
     return new CharacterIterator();
   }
 
@@ -66,24 +63,21 @@ public final class CMapFormat6 extends CMap {
       // Prevent construction.
     }
 
-    @Override
-    public boolean hasNext() {
+    @Override public boolean hasNext() {
       if (character < (firstCode + entryCount)) {
         return true;
       }
       return false;
     }
 
-    @Override
-    public Integer next() {
+    @Override public Integer next() {
       if (!hasNext()) {
         throw new NoSuchElementException("No more characters to iterate.");
       }
       return this.character++;
     }
 
-    @Override
-    public void remove() {
+    @Override public void remove() {
       throw new UnsupportedOperationException("Unable to remove a character from cmap.");
     }
   }
@@ -102,9 +96,9 @@ public final class CMapFormat6 extends CMap {
           cmapId);
     }
 
-    @Override
-    protected CMapFormat6 subBuildTable(ReadableFontData data) {
+    @Override protected CMapFormat6 subBuildTable(ReadableFontData data) {
       return new CMapFormat6(data, this.cmapId());
     }
   }
+
 }

@@ -51,4 +51,5 @@ public final class Fixed1616 {
     sb.append(Fixed1616.fractional(fixed));
     return sb.toString();
   }
+
 }

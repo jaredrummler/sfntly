@@ -126,8 +126,7 @@ abstract class LayoutCommonTable<T extends LookupTable> extends SubTable {
 
     protected abstract LookupListTable.Builder createLookupListBuilder();
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       if (serializedLength == 0) {
         return 0;
       }
@@ -142,12 +141,11 @@ abstract class LayoutCommonTable<T extends LookupTable> extends SubTable {
       return serializedLength;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    protected abstract LayoutCommonTable<T> subBuildTable(ReadableFontData data);
+    @Override protected abstract LayoutCommonTable<T> subBuildTable(ReadableFontData data);
   }
+
 }

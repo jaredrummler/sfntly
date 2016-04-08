@@ -63,8 +63,7 @@ public final class SimpleGlyph extends Glyph {
     super(data, GlyphType.Simple);
   }
 
-  @Override
-  protected void initialize() {
+  @Override protected void initialize() {
     if (this.initialized) {
       return;
     }
@@ -201,14 +200,12 @@ public final class SimpleGlyph extends Glyph {
         contour * FontData.DataSize.USHORT.size() + Offset.simpleEndPtsOfCountours.offset);
   }
 
-  @Override
-  public int instructionSize() {
+  @Override public int instructionSize() {
     this.initialize();
     return this.instructionSize;
   }
 
-  @Override
-  public ReadableFontData instructions() {
+  @Override public ReadableFontData instructions() {
     this.initialize();
     return this.data.slice(this.instructionsOffset, this.instructionSize());
   }
@@ -236,8 +233,7 @@ public final class SimpleGlyph extends Glyph {
     return this.onCurve[this.contourIndex[contour] + point];
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     this.initialize();
     StringBuilder sb = new StringBuilder(super.toString());
     sb.append("\tinstruction bytes = " + this.instructionSize() + "\n");
@@ -260,9 +256,9 @@ public final class SimpleGlyph extends Glyph {
       super(data.slice(offset, length));
     }
 
-    @Override
-    protected SimpleGlyph subBuildTable(ReadableFontData data) {
+    @Override protected SimpleGlyph subBuildTable(ReadableFontData data) {
       return new SimpleGlyph(data, 0, data.length());
     }
   }
+
 }

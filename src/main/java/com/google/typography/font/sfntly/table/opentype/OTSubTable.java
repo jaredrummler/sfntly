@@ -102,8 +102,7 @@ abstract class OTSubTable extends SubTable {
      * subDataSizeToSerialize and returns true if the result > 0.  This ensures that
      * no object is built if there is no data.
      */
-    @Override
-    protected final boolean subReadyToSerialize() {
+    @Override protected final boolean subReadyToSerialize() {
       return subDataSizeToSerialize() > 0;
     }
 
@@ -113,8 +112,7 @@ abstract class OTSubTable extends SubTable {
      * cached value.  The actual work is done in computeSerializedLength, which might
      * call this recursively on its sub-tables.
      */
-    @Override
-    public final int subDataSizeToSerialize() {
+    @Override public final int subDataSizeToSerialize() {
       if (serializedLength == -1) {
         if (unedited()) {
           prepareToEdit();
@@ -131,8 +129,7 @@ abstract class OTSubTable extends SubTable {
      * serializeEditState is called to do the actual serialization.  When this
      * finishes, resets serializedLength.
      */
-    @Override
-    public final int subSerialize(WritableFontData newData) {
+    @Override public final int subSerialize(WritableFontData newData) {
       if (unedited()) {
         internalReadData().copyTo(newData);
       } else {
@@ -143,4 +140,5 @@ abstract class OTSubTable extends SubTable {
       return length;
     }
   }
+
 }

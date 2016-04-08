@@ -29,8 +29,7 @@ public class ScriptListTable extends TagOffsetsTable<ScriptTable> {
     super(data, dataIsCanonical);
   }
 
-  @Override
-  protected ScriptTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected ScriptTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new ScriptTable(data, 0, dataIsCanonical);
   }
 
@@ -55,35 +54,30 @@ public class ScriptListTable extends TagOffsetsTable<ScriptTable> {
 
   static class Builder extends TagOffsetsTable.Builder<ScriptListTable, ScriptTable> {
 
-    @Override
-    protected VisibleSubTable.Builder<ScriptTable> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<ScriptTable> createSubTableBuilder(
         ReadableFontData data, int tag, boolean dataIsCanonical) {
       return new ScriptTable.Builder(data, 0, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ScriptTable> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<ScriptTable> createSubTableBuilder() {
       return new ScriptTable.Builder();
     }
 
-    @Override
-    protected ScriptListTable readTable(
+    @Override protected ScriptListTable readTable(
         ReadableFontData data, int baseUnused, boolean dataIsCanonical) {
       return new ScriptListTable(data, dataIsCanonical);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return 0;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return 0;
   }
+
 }

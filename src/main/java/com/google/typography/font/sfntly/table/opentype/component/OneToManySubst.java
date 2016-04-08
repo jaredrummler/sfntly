@@ -50,8 +50,7 @@ public class OneToManySubst extends SubstSubtable implements Iterable<NumRecordT
     return array.subTableAt(index);
   }
 
-  @Override
-  public Iterator<NumRecordTable> iterator() {
+  @Override public Iterator<NumRecordTable> iterator() {
     return array.iterator();
   }
 
@@ -81,32 +80,28 @@ public class OneToManySubst extends SubstSubtable implements Iterable<NumRecordT
       arrayBuilder = new GlyphIds.Builder(multiSubst.array);
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return arrayBuilder.subDataSizeToSerialize();
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       return arrayBuilder.subSerialize(newData);
     }
 
     // /////////////////////////////////
     // must implement abstract methods
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       arrayBuilder.subDataSet();
     }
 
-    @Override
-    public OneToManySubst subBuildTable(ReadableFontData data) {
+    @Override public OneToManySubst subBuildTable(ReadableFontData data) {
       return new OneToManySubst(data, 0, true);
     }
   }
+
 }

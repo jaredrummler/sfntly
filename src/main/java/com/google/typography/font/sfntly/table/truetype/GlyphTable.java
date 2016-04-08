@@ -218,19 +218,16 @@ public final class GlyphTable extends SubTableContainerTable {
 
     // internal API for building
 
-    @Override
-    protected GlyphTable subBuildTable(ReadableFontData data) {
+    @Override protected GlyphTable subBuildTable(ReadableFontData data) {
       return new GlyphTable(this.header(), data);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.glyphBuilders = null;
       super.setModelChanged(false);
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.glyphBuilders == null || this.glyphBuilders.size() == 0) {
         return 0;
       }
@@ -247,8 +244,7 @@ public final class GlyphTable extends SubTableContainerTable {
       return variable ? -size : size;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.glyphBuilders == null) {
         return false;
       }
@@ -256,8 +252,7 @@ public final class GlyphTable extends SubTableContainerTable {
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       int size = 0;
       for (Glyph.Builder<? extends Glyph> b : this.glyphBuilders) {
         size += b.subSerialize(newData.slice(size));
@@ -265,4 +260,5 @@ public final class GlyphTable extends SubTableContainerTable {
       return size;
     }
   }
+
 }

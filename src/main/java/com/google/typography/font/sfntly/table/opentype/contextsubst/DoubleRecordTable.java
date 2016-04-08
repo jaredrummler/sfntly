@@ -68,8 +68,7 @@ public class DoubleRecordTable extends SubTable {
       substLookupRecordsBuilder = other.substLookupRecordsBuilder;
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       if (substLookupRecordsBuilder != null) {
         serializedLength = substLookupRecordsBuilder.limit();
       } else {
@@ -78,8 +77,7 @@ public class DoubleRecordTable extends SubTable {
       return serializedLength;
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       if (serializedLength == 0) {
         return 0;
       }
@@ -91,13 +89,11 @@ public class DoubleRecordTable extends SubTable {
       return inputGlyphIdsBuilder.writeTo(newData) + substLookupRecordsBuilder.writeTo(newData);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       inputGlyphIdsBuilder = null;
       substLookupRecordsBuilder = null;
     }
@@ -134,4 +130,5 @@ public class DoubleRecordTable extends SubTable {
       return data.length();
     }
   }
+
 }

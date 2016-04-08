@@ -132,8 +132,7 @@ abstract class LookupList extends SubTable {
       return serializedLength;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       if (builders == null) {
         // Only the case if data is canonical
         ReadableFontData data = internalReadData();
@@ -143,8 +142,7 @@ abstract class LookupList extends SubTable {
       return serializeFromBuilders(newData);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
@@ -168,8 +166,7 @@ abstract class LookupList extends SubTable {
       return serializedLength;
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (builders == null) {
         if (dataIsCanonical) {
           return internalReadData().length();
@@ -179,12 +176,11 @@ abstract class LookupList extends SubTable {
       return computeSerializedSizeFromBuilders();
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       builders = null;
     }
 
-    @Override
-    protected abstract LookupList subBuildTable(ReadableFontData data);
+    @Override protected abstract LookupList subBuildTable(ReadableFontData data);
   }
+
 }

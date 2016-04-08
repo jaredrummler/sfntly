@@ -154,8 +154,7 @@ public class EblcTable extends SubTableContainerTable {
     return this.data.readULongAsInt(Offset.numSizes.offset);
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder(super.toString());
     sb.append("\nnum sizes = ");
     sb.append(this.numSizes());
@@ -300,18 +299,15 @@ public class EblcTable extends SubTableContainerTable {
       return sizeBuilders;
     }
 
-    @Override
-    protected EblcTable subBuildTable(ReadableFontData data) {
+    @Override protected EblcTable subBuildTable(ReadableFontData data) {
       return new EblcTable(this.header(), data);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.revert();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.sizeTableBuilders == null) {
         return 0;
       }
@@ -330,8 +326,7 @@ public class EblcTable extends SubTableContainerTable {
       return variable ? -size : size;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.sizeTableBuilders == null) {
         return false;
       }
@@ -343,8 +338,7 @@ public class EblcTable extends SubTableContainerTable {
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       // header
       int size = newData.writeFixed(0, this.version);
       size += newData.writeULong(size, this.sizeTableBuilders.size());
@@ -423,4 +417,5 @@ public class EblcTable extends SubTableContainerTable {
       return size + currentSubTableBlockStartOffset;
     }
   }
+
 }

@@ -425,8 +425,7 @@ public class Font {
     return Collections.unmodifiableMap(this.tables);
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("digest = ");
     byte[] digest = this.digest();
@@ -1028,4 +1027,5 @@ public class Font {
       return tableData;
     }
   }
+
 }

@@ -143,8 +143,7 @@ public final class HorizontalMetricsTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected HorizontalMetricsTable subBuildTable(ReadableFontData data) {
+    @Override protected HorizontalMetricsTable subBuildTable(ReadableFontData data) {
       return new HorizontalMetricsTable(this.header(), data, this.numHMetrics, this.numGlyphs);
     }
 
@@ -164,4 +163,5 @@ public final class HorizontalMetricsTable extends Table {
       this.table().numGlyphs = numGlyphs;
     }
   }
+
 }

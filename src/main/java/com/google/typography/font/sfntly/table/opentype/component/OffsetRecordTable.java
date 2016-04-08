@@ -59,19 +59,16 @@ public abstract class OffsetRecordTable<S extends SubTable> extends HeaderTable
     return subTableForRecord(record);
   }
 
-  @Override
-  public Iterator<S> iterator() {
+  @Override public Iterator<S> iterator() {
     return new Iterator<S>() {
 
       Iterator<NumRecord> recordIterator = recordList.iterator();
 
-      @Override
-      public boolean hasNext() {
+      @Override public boolean hasNext() {
         return recordIterator.hasNext();
       }
 
-      @Override
-      public S next() {
+      @Override public S next() {
         if (!hasNext()) {
           throw new NoSuchElementException();
         }
@@ -79,8 +76,7 @@ public abstract class OffsetRecordTable<S extends SubTable> extends HeaderTable
         return subTableForRecord(record);
       }
 
-      @Override
-      public void remove() {
+      @Override public void remove() {
         throw new UnsupportedOperationException();
       }
     };
@@ -187,8 +183,7 @@ public abstract class OffsetRecordTable<S extends SubTable> extends HeaderTable
     // ////////////////////////////////////
     // overriden methods
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       if (builders != null) {
         computeSizeFromBuilders();
       } else {
@@ -207,8 +202,7 @@ public abstract class OffsetRecordTable<S extends SubTable> extends HeaderTable
       return serializedSubtablePartLength;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
@@ -223,18 +217,15 @@ public abstract class OffsetRecordTable<S extends SubTable> extends HeaderTable
       return serializeFromData(newData);
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       return subSerialize(newData, 0);
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       builders = null;
     }
 
-    @Override
-    public T subBuildTable(ReadableFontData data) {
+    @Override public T subBuildTable(ReadableFontData data) {
       return readTable(data, 0, true);
     }
 
@@ -362,4 +353,5 @@ public abstract class OffsetRecordTable<S extends SubTable> extends HeaderTable
       return createSubTableBuilder(newData, dataIsCanonical);
     }
   }
+
 }

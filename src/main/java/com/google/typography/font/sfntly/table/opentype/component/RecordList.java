@@ -115,8 +115,7 @@ public abstract class RecordList<T extends Record> implements Iterable<T> {
     return false;
   }
 
-  @Override
-  public Iterator<T> iterator() {
+  @Override public Iterator<T> iterator() {
     if (recordsToWrite != null) {
       return recordsToWrite.iterator();
     }
@@ -125,21 +124,18 @@ public abstract class RecordList<T extends Record> implements Iterable<T> {
 
       private int current = 0;
 
-      @Override
-      public boolean hasNext() {
+      @Override public boolean hasNext() {
         return current < count;
       }
 
-      @Override
-      public T next() {
+      @Override public T next() {
         if (!hasNext()) {
           throw new NoSuchElementException();
         }
         return getRecordAt(readData, sizeOfList(current++));
       }
 
-      @Override
-      public void remove() {
+      @Override public void remove() {
         throw new UnsupportedOperationException();
       }
     };

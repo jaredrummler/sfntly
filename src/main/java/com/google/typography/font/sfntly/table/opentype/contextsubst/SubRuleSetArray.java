@@ -36,13 +36,11 @@ public class SubRuleSetArray extends OffsetRecordTable<SubRuleSet> {
     coverage = new CoverageTable(data.slice(coverageOffset), 0, dataIsCanonical);
   }
 
-  @Override
-  public SubRuleSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override public SubRuleSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new SubRuleSet(data, 0, dataIsCanonical);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -60,35 +58,30 @@ public class SubRuleSetArray extends OffsetRecordTable<SubRuleSet> {
       super(table);
     }
 
-    @Override
-    protected SubRuleSetArray readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected SubRuleSetArray readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new SubRuleSetArray(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubRuleSet> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<SubRuleSet> createSubTableBuilder() {
       return new SubRuleSet.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubRuleSet> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<SubRuleSet> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new SubRuleSet.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<SubRuleSet> createSubTableBuilder(SubRuleSet subTable) {
+    @Override protected VisibleSubTable.Builder<SubRuleSet> createSubTableBuilder(SubRuleSet subTable) {
       return new SubRuleSet.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(COVERAGE_INDEX, COVERAGE_DEFAULT);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return FIELD_COUNT;
     }
   }
+
 }

@@ -25,8 +25,7 @@ public class ChainSubRuleSet extends ChainSubGenericRuleSet<ChainSubRule> {
     super(data, base, dataIsCanonical);
   }
 
-  @Override
-  protected ChainSubRule readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected ChainSubRule readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new ChainSubRule(data, base, dataIsCanonical);
   }
 
@@ -45,25 +44,22 @@ public class ChainSubRuleSet extends ChainSubGenericRuleSet<ChainSubRule> {
       super(data, dataIsCanonical);
     }
 
-    @Override
-    protected ChainSubRuleSet readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected ChainSubRuleSet readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new ChainSubRuleSet(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubRule> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<ChainSubRule> createSubTableBuilder() {
       return new ChainSubRule.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubRule> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<ChainSubRule> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new ChainSubRule.Builder(data, 0, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubRule> createSubTableBuilder(ChainSubRule subTable) {
+    @Override protected VisibleSubTable.Builder<ChainSubRule> createSubTableBuilder(ChainSubRule subTable) {
       return new ChainSubRule.Builder(subTable);
     }
   }
+
 }

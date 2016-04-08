@@ -34,38 +34,32 @@ final class GrowableMemoryByteArray extends ByteArray<GrowableMemoryByteArray> {
     b = new byte[INITIAL_LENGTH];
   }
 
-  @Override
-  protected void internalPut(int index, byte b) {
+  @Override protected void internalPut(int index, byte b) {
     growTo(index + 1);
     this.b[index] = b;
   }
 
-  @Override
-  protected int internalPut(int index, byte[] b, int offset, int length) {
+  @Override protected int internalPut(int index, byte[] b, int offset, int length) {
     growTo(index + length);
     System.arraycopy(b, offset, this.b, index, length);
     return length;
   }
 
-  @Override
-  protected int internalGet(int index) {
+  @Override protected int internalGet(int index) {
     return this.b[index];
   }
 
-  @Override
-  protected int internalGet(int index, byte[] b, int offset, int length) {
+  @Override protected int internalGet(int index, byte[] b, int offset, int length) {
     System.arraycopy(this.b, index, b, offset, length);
     return length;
   }
 
-  @Override
-  public void close() {
+  @Override public void close() {
 
     this.b = null;
   }
 
-  @Override
-  public int copyTo(OutputStream os, int offset, int length) throws IOException {
+  @Override public int copyTo(OutputStream os, int offset, int length) throws IOException {
     os.write(b, offset, length);
     return length;
   }
@@ -79,4 +73,5 @@ final class GrowableMemoryByteArray extends ByteArray<GrowableMemoryByteArray> {
     System.arraycopy(b, 0, newArray, 0, b.length);
     b = newArray;
   }
+
 }

@@ -54,8 +54,8 @@ final class GenericTableBuilder extends TableBasedTableBuilder<Table> {
     super(header, data);
   }
 
-  @Override
-  protected Table subBuildTable(ReadableFontData data) {
+  @Override protected Table subBuildTable(ReadableFontData data) {
     return new Table(this.header(), this.internalReadData());
   }
+
 }

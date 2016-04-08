@@ -56,4 +56,5 @@ abstract class GlyphMetrics extends SubTable {
       super(data);
     }
   }
+
 }

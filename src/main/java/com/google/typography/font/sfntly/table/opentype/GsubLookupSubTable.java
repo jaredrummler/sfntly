@@ -28,11 +28,9 @@ abstract class GsubLookupSubTable extends LookupSubTable {
     super(data, dataIsCanonical);
   }
 
-  @Override
-  public abstract Builder<? extends GsubLookupSubTable> builder();
+  @Override public abstract Builder<? extends GsubLookupSubTable> builder();
 
-  @Override
-  public abstract GsubLookupType lookupType();
+  @Override public abstract GsubLookupType lookupType();
 
   static abstract class Builder<T extends GsubLookupSubTable>
       extends LookupSubTable.Builder<T> {
@@ -45,7 +43,7 @@ abstract class GsubLookupSubTable extends LookupSubTable {
       super(table);
     }
 
-    @Override
-    public abstract GsubLookupType lookupType();
+    @Override public abstract GsubLookupType lookupType();
   }
+
 }

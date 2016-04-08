@@ -62,16 +62,14 @@ final class SegmentedGrowableMemoryByteArray extends ByteArray<SegmentedGrowable
     this.lowBits = lowBits;
   }
 
-  @Override
-  protected void internalPut(int index, byte b) {
+  @Override protected void internalPut(int index, byte b) {
     int bufferIndex = this.bufferIndex(index);
     int bufferOffset = this.bufferOffset(bufferIndex, index);
     byte[] buffer = this.buffer(bufferIndex);
     buffer[bufferOffset] = b;
   }
 
-  @Override
-  protected int internalPut(int index, byte[] b, int offset, int length) {
+  @Override protected int internalPut(int index, byte[] b, int offset, int length) {
     int copyCount = 0;
     while (copyCount < length) {
       int bufferIndex = this.bufferIndex(index);
@@ -86,16 +84,14 @@ final class SegmentedGrowableMemoryByteArray extends ByteArray<SegmentedGrowable
     return copyCount;
   }
 
-  @Override
-  protected int internalGet(int index) {
+  @Override protected int internalGet(int index) {
     int bufferIndex = this.bufferIndex(index);
     int bufferOffset = this.bufferOffset(bufferIndex, index);
     byte[] buffer = this.buffer(bufferIndex);
     return buffer[bufferOffset];
   }
 
-  @Override
-  protected int internalGet(int index, byte[] b, int offset, int length) {
+  @Override protected int internalGet(int index, byte[] b, int offset, int length) {
     int copyCount = 0;
     while (copyCount < length) {
       int bufferIndex = this.bufferIndex(index);
@@ -110,8 +106,7 @@ final class SegmentedGrowableMemoryByteArray extends ByteArray<SegmentedGrowable
     return copyCount;
   }
 
-  @Override
-  public void close() {
+  @Override public void close() {
     this.buffers = null;
   }
 
@@ -164,4 +159,5 @@ final class SegmentedGrowableMemoryByteArray extends ByteArray<SegmentedGrowable
     b = this.buffers.get(index);
     return b;
   }
+
 }

@@ -45,4 +45,5 @@ public class GlyphClassList extends NumRecordList {
   public static int sizeOfListOfCount(int count) {
     return RecordList.DATA_OFFSET + count * NumRecord.RECORD_SIZE;
   }
+
 }

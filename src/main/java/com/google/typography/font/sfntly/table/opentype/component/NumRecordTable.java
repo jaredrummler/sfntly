@@ -28,13 +28,11 @@ public class NumRecordTable extends RecordsTable<NumRecord> {
     super(records);
   }
 
-  @Override
-  protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
+  @Override protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
     return new NumRecordList(data);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return 0;
   }
 
@@ -52,29 +50,26 @@ public class NumRecordTable extends RecordsTable<NumRecord> {
       super(table);
     }
 
-    @Override
-    protected NumRecordTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected NumRecordTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new NumRecordTable(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
+    @Override protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new NumRecordList(data);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return 0;
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
   }
+
 }

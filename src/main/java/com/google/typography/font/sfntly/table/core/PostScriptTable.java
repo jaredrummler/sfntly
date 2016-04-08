@@ -474,9 +474,9 @@ public final class PostScriptTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected PostScriptTable subBuildTable(ReadableFontData data) {
+    @Override protected PostScriptTable subBuildTable(ReadableFontData data) {
       return new PostScriptTable(this.header(), data);
     }
   }
+
 }

@@ -53,8 +53,7 @@ public final class CompositeGlyph extends Glyph {
     initialize();
   }
 
-  @Override
-  protected void initialize() {
+  @Override protected void initialize() {
     if (this.initialized) {
       return;
     }
@@ -151,18 +150,15 @@ public final class CompositeGlyph extends Glyph {
     return transformation;
   }
 
-  @Override
-  public int instructionSize() {
+  @Override public int instructionSize() {
     return this.instructionSize;
   }
 
-  @Override
-  public ReadableFontData instructions() {
+  @Override public ReadableFontData instructions() {
     return this.data.slice(this.instructionsOffset, this.instructionSize());
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder(super.toString());
     sb.append("\ncontourOffset.length = ");
     sb.append(this.contourIndex.size());
@@ -193,9 +189,9 @@ public final class CompositeGlyph extends Glyph {
       super(data.slice(offset, length));
     }
 
-    @Override
-    protected CompositeGlyph subBuildTable(ReadableFontData data) {
+    @Override protected CompositeGlyph subBuildTable(ReadableFontData data) {
       return new CompositeGlyph(data);
     }
   }
+
 }

@@ -598,4 +598,5 @@ class RuleExtractor {
     }
     return result;
   }
+
 }

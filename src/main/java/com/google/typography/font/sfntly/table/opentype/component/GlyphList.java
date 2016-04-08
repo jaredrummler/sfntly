@@ -25,4 +25,5 @@ class GlyphList extends ArrayList<Integer> {
   GlyphList() {
     super();
   }
+
 }

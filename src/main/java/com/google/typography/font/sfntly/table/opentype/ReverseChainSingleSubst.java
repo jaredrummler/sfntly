@@ -54,8 +54,7 @@ public class ReverseChainSingleSubst extends SubstSubtable {
     substitutes = new NumRecordTable(records);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return super.fieldCount() + FIELD_COUNT;
   }
 
@@ -87,8 +86,7 @@ public class ReverseChainSingleSubst extends SubstSubtable {
       lookAheadGlyphsBuilder = other.lookAheadGlyphsBuilder;
     }
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       if (lookAheadGlyphsBuilder != null) {
         serializedLength = lookAheadGlyphsBuilder.limit();
       } else {
@@ -97,8 +95,7 @@ public class ReverseChainSingleSubst extends SubstSubtable {
       return serializedLength;
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       if (serializedLength == 0) {
         return 0;
       }
@@ -126,18 +123,15 @@ public class ReverseChainSingleSubst extends SubstSubtable {
       return subTableWriteOffset;
     }
 
-    @Override
-    public ReverseChainSingleSubst subBuildTable(ReadableFontData data) {
+    @Override public ReverseChainSingleSubst subBuildTable(ReadableFontData data) {
       return new ReverseChainSingleSubst(data, 0, true);
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       backtrackGlyphsBuilder = null;
       lookAheadGlyphsBuilder = null;
     }
@@ -177,4 +171,5 @@ public class ReverseChainSingleSubst extends SubstSubtable {
       return data.length();
     }
   }
+
 }

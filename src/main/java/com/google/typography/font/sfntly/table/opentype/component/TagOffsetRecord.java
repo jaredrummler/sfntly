@@ -37,10 +37,10 @@ final class TagOffsetRecord implements Record {
     this.offset = offset;
   }
 
-  @Override
-  public int writeTo(WritableFontData newData, int base) {
+  @Override public int writeTo(WritableFontData newData, int base) {
     newData.writeULong(base + TAG_POS, tag);
     newData.writeUShort(base + OFFSET_POS, offset);
     return RECORD_SIZE;
   }
+
 }

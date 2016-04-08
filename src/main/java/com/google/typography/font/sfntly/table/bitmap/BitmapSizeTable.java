@@ -195,8 +195,7 @@ public final class BitmapSizeTable extends SubTable {
     return this.indexSubTables;
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder("BitmapSizeTable: ");
     List<IndexSubTable> indexSubTableList = this.getIndexSubTableList();
     sb.append("[s=0x");
@@ -383,8 +382,7 @@ public final class BitmapSizeTable extends SubTable {
         this.subTableIter = Builder.this.getIndexSubTableBuilders().iterator();
       }
 
-      @Override
-      public boolean hasNext() {
+      @Override public boolean hasNext() {
         if (this.subTableGlyphInfoIter != null && this.subTableGlyphInfoIter.hasNext()) {
           return true;
         }
@@ -398,16 +396,14 @@ public final class BitmapSizeTable extends SubTable {
         return false;
       }
 
-      @Override
-      public BitmapGlyphInfo next() {
+      @Override public BitmapGlyphInfo next() {
         if (!hasNext()) {
           throw new NoSuchElementException("No more characters to iterate.");
         }
         return this.subTableGlyphInfoIter.next();
       }
 
-      @Override
-      public void remove() {
+      @Override public void remove() {
         throw new UnsupportedOperationException("Unable to remove a glyph info.");
       }
     }
@@ -501,18 +497,15 @@ public final class BitmapSizeTable extends SubTable {
           this.masterReadData(), this.indexSubTableArrayOffset(), index);
     }
 
-    @Override
-    protected BitmapSizeTable subBuildTable(ReadableFontData data) {
+    @Override protected BitmapSizeTable subBuildTable(ReadableFontData data) {
       return new BitmapSizeTable(data, this.masterReadData());
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       this.revert();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       if (this.indexSubTableBuilders() == null) {
         return 0;
       }
@@ -529,19 +522,18 @@ public final class BitmapSizeTable extends SubTable {
       return variable ? -size : size;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       if (this.indexSubTableBuilders() == null) {
         return false;
       }
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       this.setNumberOfIndexSubTables(this.indexSubTableBuilders().size());
       int size = this.internalReadData().copyTo(newData);
       return size;
     }
   }
+
 }

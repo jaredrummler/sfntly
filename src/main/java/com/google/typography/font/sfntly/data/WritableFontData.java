@@ -134,8 +134,7 @@ public final class WritableFontData extends ReadableFontData {
    *     the number of bytes in the slice
    * @return a slice of the original FontData
    */
-  @Override
-  public WritableFontData slice(int offset, int length) {
+  @Override public WritableFontData slice(int offset, int length) {
     if (offset < 0 || (offset + length) > this.size()) {
       throw new IndexOutOfBoundsException("Attempt to bind data outside of its limits.");
     }
@@ -151,8 +150,7 @@ public final class WritableFontData extends ReadableFontData {
    *     the start of the slice
    * @return a slice of the original FontData
    */
-  @Override
-  public WritableFontData slice(int offset) {
+  @Override public WritableFontData slice(int offset) {
     if (offset < 0 || offset > this.size()) {
       throw new IndexOutOfBoundsException("Attempt to bind data outside of its limits.");
     }
@@ -453,4 +451,5 @@ public final class WritableFontData extends ReadableFontData {
   public void copyFrom(InputStream is) throws IOException {
     this.array.copyFrom(is);
   }
+
 }

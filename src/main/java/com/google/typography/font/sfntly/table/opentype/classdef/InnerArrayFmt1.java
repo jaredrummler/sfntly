@@ -33,13 +33,11 @@ public class InnerArrayFmt1 extends RecordsTable<NumRecord> {
     super(data, base, dataIsCanonical);
   }
 
-  @Override
-  protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
+  @Override protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
     return new NumRecordList(data);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -49,27 +47,24 @@ public class InnerArrayFmt1 extends RecordsTable<NumRecord> {
       super(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(START_GLYPH_INDEX, START_GLYPH_CONST);
     }
 
-    @Override
-    protected InnerArrayFmt1 readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected InnerArrayFmt1 readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new InnerArrayFmt1(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
+    @Override protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new NumRecordList(data);
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
   }
+
 }

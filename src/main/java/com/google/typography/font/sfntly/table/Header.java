@@ -42,16 +42,14 @@ public final class Header {
 
   public static final Comparator<Header> COMPARATOR_BY_OFFSET = new Comparator<Header>() {
 
-    @Override
-    public int compare(Header h1, Header h2) {
+    @Override public int compare(Header h1, Header h2) {
       return h1.offset - h2.offset;
     }
   };
 
   public static final Comparator<Header> COMPARATOR_BY_TAG = new Comparator<Header>() {
 
-    @Override
-    public int compare(Header h1, Header h2) {
+    @Override public int compare(Header h1, Header h2) {
       return h1.tag - h2.tag;
     }
   };
@@ -191,8 +189,7 @@ public final class Header {
    * Checks equality of this Header against another object. The only property of
    * the Header object that is considered is the tag.
    */
-  @Override
-  public boolean equals(Object obj) {
+  @Override public boolean equals(Object obj) {
     if (!(obj instanceof Header)) {
       return false;
     }
@@ -203,13 +200,11 @@ public final class Header {
    * Computes the hashcode for this Header . The only property of the Header
    * object that is considered is the tag.
    */
-  @Override
-  public int hashCode() {
+  @Override public int hashCode() {
     return this.tag;
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder builder = new StringBuilder();
     builder.append("[");
     builder.append(Tag.stringValue(this.tag));
@@ -222,4 +217,5 @@ public final class Header {
     builder.append("]");
     return builder.toString();
   }
+
 }

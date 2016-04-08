@@ -127,8 +127,7 @@ public abstract class IndexSubTable extends SubTable {
     return IndexSubTable.checkGlyphRange(glyphId, this.firstGlyphIndex(), this.lastGlyphIndex());
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     String s = "IndexSubTable: " + "[0x" + Integer.toHexString(this.firstGlyphIndex()) + " : Ox"
         + Integer.toHexString(this.lastGlyphIndex()) + "]" + ", format = " + this.indexFormat
         + ", image format = " + this.imageFormat() + ", imageOff = "
@@ -359,33 +358,27 @@ public abstract class IndexSubTable extends SubTable {
      * allow the BitmapSizeTable to see these methods through an abstract
      * reference.
      */
-    @Override
-    protected T subBuildTable(ReadableFontData data) {
+    @Override protected T subBuildTable(ReadableFontData data) {
       return null;
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // NOP
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return 0;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return false;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return 0;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
       String s =
           "IndexSubTable: " + "[0x" + Integer.toHexString(this.firstGlyphIndex()) + " : Ox"
               + Integer.toHexString(this.lastGlyphIndex()) + "]" + ", format = " + this.indexFormat
@@ -399,4 +392,5 @@ public abstract class IndexSubTable extends SubTable {
       return s;
     }
   }
+
 }

@@ -52,8 +52,7 @@ public class ChainSubClassSetArray extends OffsetRecordTable<ChainSubClassSet> {
     lookAheadClassDef = new ClassDefTable(data.slice(classDefOffset), 0, dataIsCanonical);
   }
 
-  @Override
-  public ChainSubClassSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override public ChainSubClassSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new ChainSubClassSet(data, 0, dataIsCanonical);
   }
 
@@ -72,44 +71,38 @@ public class ChainSubClassSetArray extends OffsetRecordTable<ChainSubClassSet> {
       super(table);
     }
 
-    @Override
-    protected ChainSubClassSetArray readTable(
+    @Override protected ChainSubClassSetArray readTable(
         ReadableFontData data, int base, boolean dataIsCanonical) {
       return new ChainSubClassSetArray(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubClassSet> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<ChainSubClassSet> createSubTableBuilder() {
       return new ChainSubClassSet.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubClassSet> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<ChainSubClassSet> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new ChainSubClassSet.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubClassSet> createSubTableBuilder(ChainSubClassSet subTable) {
+    @Override protected VisibleSubTable.Builder<ChainSubClassSet> createSubTableBuilder(ChainSubClassSet subTable) {
       return new ChainSubClassSet.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(COVERAGE_INDEX, COVERAGE_DEFAULT);
       setField(BACKTRACK_CLASS_DEF_INDEX, BACKTRACK_CLASS_DEF_DEFAULT);
       setField(INPUT_CLASS_DEF_INDEX, INPUT_CLASS_DEF_DEFAULT);
       setField(LOOK_AHEAD_CLASS_DEF_INDEX, LOOK_AHEAD_CLASS_DEF_DEFAULT);
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
+
 }

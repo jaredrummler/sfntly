@@ -96,27 +96,24 @@ public abstract class HeaderTable extends SubTable {
      * make it available to packages under
      * {@code com.google.typography.font.sfntly.table.opentype}.
      */
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return headerSize();
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       for (Entry<Integer, Integer> entry : map.entrySet()) {
         newData.writeUShort(entry.getKey() * FIELD_SIZE, entry.getValue());
       }
       return headerSize();
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       map = new HashMap<Integer, Integer>();
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
   }
+
 }

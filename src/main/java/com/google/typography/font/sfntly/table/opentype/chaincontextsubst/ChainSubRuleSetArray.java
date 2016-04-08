@@ -36,8 +36,7 @@ public class ChainSubRuleSetArray extends OffsetRecordTable<ChainSubRuleSet> {
     coverage = new CoverageTable(data.slice(coverageOffset), 0, dataIsCanonical);
   }
 
-  @Override
-  public ChainSubRuleSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override public ChainSubRuleSet readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new ChainSubRuleSet(data, 0, dataIsCanonical);
   }
 
@@ -56,42 +55,36 @@ public class ChainSubRuleSetArray extends OffsetRecordTable<ChainSubRuleSet> {
       super(table);
     }
 
-    @Override
-    protected ChainSubRuleSetArray readTable(
+    @Override protected ChainSubRuleSetArray readTable(
         ReadableFontData data, int base, boolean dataIsCanonical) {
       return new ChainSubRuleSetArray(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubRuleSet> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<ChainSubRuleSet> createSubTableBuilder() {
       return new ChainSubRuleSet.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubRuleSet> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<ChainSubRuleSet> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new ChainSubRuleSet.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<ChainSubRuleSet> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<ChainSubRuleSet> createSubTableBuilder(
         ChainSubRuleSet subTable) {
       return new ChainSubRuleSet.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(COVERAGE_INDEX, COVERAGE_DEFAULT);
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
+
 }

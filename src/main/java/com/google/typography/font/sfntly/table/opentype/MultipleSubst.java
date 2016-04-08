@@ -24,4 +24,5 @@ public class MultipleSubst extends OneToManySubst {
   MultipleSubst(ReadableFontData data, int base, boolean dataIsCanonical) {
     super(data, base, dataIsCanonical);
   }
+
 }

@@ -33,13 +33,12 @@ public final class SubstLookupRecordList extends RecordList<SubstLookupRecord> {
     super(data, 0, countOffset, valuesOffset);
   }
 
-  @Override
-  protected SubstLookupRecord getRecordAt(ReadableFontData data, int offset) {
+  @Override protected SubstLookupRecord getRecordAt(ReadableFontData data, int offset) {
     return new SubstLookupRecord(data, offset);
   }
 
-  @Override
-  protected int recordSize() {
+  @Override protected int recordSize() {
     return SubstLookupRecord.RECORD_SIZE;
   }
+
 }

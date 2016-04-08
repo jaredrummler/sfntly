@@ -31,8 +31,7 @@ public abstract class SubstSubtable extends HeaderTable {
     format = getField(FORMAT_INDEX);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -49,14 +48,13 @@ public abstract class SubstSubtable extends HeaderTable {
       super();
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(FORMAT_INDEX, FORMAT_DEFAULT);
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
   }
+
 }

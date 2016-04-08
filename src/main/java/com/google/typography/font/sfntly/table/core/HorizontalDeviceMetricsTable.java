@@ -110,8 +110,7 @@ public class HorizontalDeviceMetricsTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected HorizontalDeviceMetricsTable subBuildTable(ReadableFontData data) {
+    @Override protected HorizontalDeviceMetricsTable subBuildTable(ReadableFontData data) {
       return new HorizontalDeviceMetricsTable(this.header(), data, this.numGlyphs);
     }
 
@@ -123,4 +122,5 @@ public class HorizontalDeviceMetricsTable extends Table {
       this.table().numGlyphs = numGlyphs;
     }
   }
+
 }

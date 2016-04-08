@@ -92,8 +92,7 @@ public final class CMapFormat2 extends CMap {
     return 2;
   }
 
-  @Override
-  public int glyphId(int character) {
+  @Override public int glyphId(int character) {
     if (character > 0xffff) {
       return CMapTable.NOTDEF;
     }
@@ -133,13 +132,11 @@ public final class CMapFormat2 extends CMap {
     return (p + idDelta) % 65536;
   }
 
-  @Override
-  public int language() {
+  @Override public int language() {
     return this.data.readUShort(Offset.format2Language.offset);
   }
 
-  @Override
-  public Iterator<Integer> iterator() {
+  @Override public Iterator<Integer> iterator() {
     return new CharacterIterator(0, 0xffff);
   }
 
@@ -157,9 +154,9 @@ public final class CMapFormat2 extends CMap {
           cmapId);
     }
 
-    @Override
-    protected CMapFormat2 subBuildTable(ReadableFontData data) {
+    @Override protected CMapFormat2 subBuildTable(ReadableFontData data) {
       return new CMapFormat2(data, this.cmapId());
     }
   }
+
 }

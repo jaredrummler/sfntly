@@ -40,44 +40,37 @@ public class LigatureSet extends OffsetRecordTable<Ligature> {
       super(table);
     }
 
-    @Override
-    protected LigatureSet readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected LigatureSet readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new LigatureSet(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<Ligature> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<Ligature> createSubTableBuilder() {
       return new Ligature.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<Ligature> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<Ligature> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new Ligature.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<Ligature> createSubTableBuilder(Ligature subTable) {
+    @Override protected VisibleSubTable.Builder<Ligature> createSubTableBuilder(Ligature subTable) {
       return new Ligature.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return 0;
     }
   }
 
-  @Override
-  protected Ligature readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected Ligature readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new Ligature(data, base, dataIsCanonical);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return 0;
   }
+
 }

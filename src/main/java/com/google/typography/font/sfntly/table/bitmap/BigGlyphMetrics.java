@@ -171,29 +171,25 @@ public class BigGlyphMetrics extends GlyphMetrics {
       this.internalWriteData().writeByte(Offset.vertAdvance.offset, advance);
     }
 
-    @Override
-    protected BigGlyphMetrics subBuildTable(ReadableFontData data) {
+    @Override protected BigGlyphMetrics subBuildTable(ReadableFontData data) {
       return new BigGlyphMetrics(data);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // NOP
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return 0;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return false;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return this.data().copyTo(newData);
     }
   }
+
 }

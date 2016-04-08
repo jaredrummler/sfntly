@@ -38,9 +38,9 @@ public class ChainSubRule extends ChainSubGenericRule {
       super(data, base, dataIsCanonical);
     }
 
-    @Override
-    public ChainSubRule subBuildTable(ReadableFontData data) {
+    @Override public ChainSubRule subBuildTable(ReadableFontData data) {
       return new ChainSubRule(data, 0, true);
     }
   }
+
 }

@@ -120,29 +120,25 @@ public class SmallGlyphMetrics extends GlyphMetrics {
       this.internalWriteData().writeByte(Offset.Advance.offset, advance);
     }
 
-    @Override
-    protected SmallGlyphMetrics subBuildTable(ReadableFontData data) {
+    @Override protected SmallGlyphMetrics subBuildTable(ReadableFontData data) {
       return new SmallGlyphMetrics(data);
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // NOP
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return 0;
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return false;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return this.data().copyTo(newData);
     }
   }
+
 }

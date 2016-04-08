@@ -115,8 +115,7 @@ public class FontInputStream extends FilterInputStream {
     this.bounded = true;
   }
 
-  @Override
-  public int read() throws IOException {
+  @Override public int read() throws IOException {
     if (this.bounded && this.position >= this.length) {
       return -1;
     }
@@ -127,8 +126,7 @@ public class FontInputStream extends FilterInputStream {
     return b;
   }
 
-  @Override
-  public int read(byte[] b, int off, int len) throws IOException {
+  @Override public int read(byte[] b, int off, int len) throws IOException {
     if (this.bounded && this.position >= this.length) {
       return -1;
     }
@@ -138,8 +136,7 @@ public class FontInputStream extends FilterInputStream {
     return bytesRead;
   }
 
-  @Override
-  public int read(byte[] b) throws IOException {
+  @Override public int read(byte[] b) throws IOException {
     return this.read(b, 0, b.length);
   }
 
@@ -248,10 +245,10 @@ public class FontInputStream extends FilterInputStream {
     return this.readULong() << 32 | this.readULong();
   }
 
-  @Override
-  public long skip(long n) throws IOException {
+  @Override public long skip(long n) throws IOException {
     long skipped = super.skip(n);
     this.position += skipped;
     return skipped;
   }
+
 }

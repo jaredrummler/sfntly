@@ -135,29 +135,25 @@ public abstract class BitmapGlyph extends SubTable {
       return this.format;
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // NOP
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       return this.internalReadData().length();
     }
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    protected int subSerialize(WritableFontData newData) {
+    @Override protected int subSerialize(WritableFontData newData) {
       return this.internalReadData().copyTo(newData);
     }
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     return "BitmapGlyph [format=" + format + ", data = " + super.toString() + "]";
   }
+
 }

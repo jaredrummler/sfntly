@@ -24,13 +24,11 @@ class GsubCommonTable extends LayoutCommonTable<GsubLookupTable> {
     super(data, dataIsCanonical);
   }
 
-  @Override
-  protected LookupListTable createLookupList() {
+  @Override protected LookupListTable createLookupList() {
     return super.createLookupList();
   }
 
-  @Override
-  protected LookupListTable handleCreateLookupList(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected LookupListTable handleCreateLookupList(ReadableFontData data, boolean dataIsCanonical) {
     return new LookupListTable(data, dataIsCanonical);
   }
 
@@ -44,31 +42,27 @@ class GsubCommonTable extends LayoutCommonTable<GsubLookupTable> {
       super(null, false);
     }
 
-    @Override
-    protected LookupListTable handleCreateLookupList(
+    @Override protected LookupListTable handleCreateLookupList(
         ReadableFontData data, boolean dataIsCanonical) {
       return new LookupListTable(data, dataIsCanonical);
     }
 
-    @Override
-    protected GsubCommonTable subBuildTable(ReadableFontData data) {
+    @Override protected GsubCommonTable subBuildTable(ReadableFontData data) {
       return new GsubCommonTable(data, true);
     }
 
-    @Override
-    protected LookupListTable.Builder createLookupListBuilder() {
+    @Override protected LookupListTable.Builder createLookupListBuilder() {
       return new LookupListTable.Builder();
     }
 
-    @Override
-    protected int subDataSizeToSerialize() {
+    @Override protected int subDataSizeToSerialize() {
       // TODO(cibu): do real implementation
       return 0;
     }
 
-    @Override
-    protected void subDataSet() {
+    @Override protected void subDataSet() {
       // TODO(cibu): do real implementation
     }
   }
+
 }

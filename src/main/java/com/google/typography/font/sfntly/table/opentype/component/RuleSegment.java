@@ -50,8 +50,7 @@ class RuleSegment extends LinkedList<GlyphGroup> {
     return addInternal(glyphGroup);
   }
 
-  @Override
-  public boolean addAll(Collection<? extends GlyphGroup> glyphGroups) {
+  @Override public boolean addAll(Collection<? extends GlyphGroup> glyphGroups) {
     for (GlyphGroup glyphGroup : glyphGroups) {
       if (glyphGroup == null) {
         throw new IllegalArgumentException("Null GlyphGroup not allowed");
@@ -67,8 +66,7 @@ class RuleSegment extends LinkedList<GlyphGroup> {
     return super.add(glyphGroup);
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     StringBuilder sb = new StringBuilder();
     for (GlyphGroup glyphGroup : this) {
       sb.append(glyphGroup.toString());

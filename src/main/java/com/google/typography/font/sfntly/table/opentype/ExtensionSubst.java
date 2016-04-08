@@ -73,9 +73,9 @@ public class ExtensionSubst extends SubstSubtable {
       super(data, dataIsCanonical);
     }
 
-    @Override
-    public SubstSubtable subBuildTable(ReadableFontData data) {
+    @Override public SubstSubtable subBuildTable(ReadableFontData data) {
       return null;
     }
   }
+
 }

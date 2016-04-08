@@ -102,9 +102,9 @@ public final class ControlProgramTable extends Table {
       super(header, data);
     }
 
-    @Override
-    protected ControlProgramTable subBuildTable(ReadableFontData data) {
+    @Override protected ControlProgramTable subBuildTable(ReadableFontData data) {
       return new ControlProgramTable(this.header(), data);
     }
   }
+
 }

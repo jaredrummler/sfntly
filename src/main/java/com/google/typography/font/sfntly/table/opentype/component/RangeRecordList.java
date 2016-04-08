@@ -33,13 +33,12 @@ public final class RangeRecordList extends RecordList<RangeRecord> {
     return RecordList.DATA_OFFSET + count * RangeRecord.RECORD_SIZE;
   }
 
-  @Override
-  protected RangeRecord getRecordAt(ReadableFontData data, int offset) {
+  @Override protected RangeRecord getRecordAt(ReadableFontData data, int offset) {
     return new RangeRecord(data, offset);
   }
 
-  @Override
-  protected int recordSize() {
+  @Override protected int recordSize() {
     return RangeRecord.RECORD_SIZE;
   }
+
 }

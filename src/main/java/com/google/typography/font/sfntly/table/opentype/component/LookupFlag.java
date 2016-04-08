@@ -51,5 +51,6 @@ enum LookupFlag {
   static int clearFlag(int flags, int mask) {
     return flags & ~mask;
   }
+
 }
 

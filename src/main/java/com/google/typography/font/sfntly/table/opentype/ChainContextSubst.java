@@ -156,32 +156,28 @@ public class ChainContextSubst extends SubstSubtable {
     // ///////////////////////////////
     // Public methods to serialize
 
-    @Override
-    public int subDataSizeToSerialize() {
+    @Override public int subDataSizeToSerialize() {
       return arrayBuilder.subDataSizeToSerialize();
     }
 
-    @Override
-    public int subSerialize(WritableFontData newData) {
+    @Override public int subSerialize(WritableFontData newData) {
       return arrayBuilder.subSerialize(newData);
     }
 
     // /////////////////////////////////
     // must implement abstract methods
 
-    @Override
-    protected boolean subReadyToSerialize() {
+    @Override protected boolean subReadyToSerialize() {
       return true;
     }
 
-    @Override
-    public void subDataSet() {
+    @Override public void subDataSet() {
       arrayBuilder.subDataSet();
     }
 
-    @Override
-    public ChainContextSubst subBuildTable(ReadableFontData data) {
+    @Override public ChainContextSubst subBuildTable(ReadableFontData data) {
       return new ChainContextSubst(data, 0, true);
     }
   }
+
 }

@@ -98,4 +98,5 @@ public abstract class ByteArrayTableBuilder<T extends Table> extends TableBasedT
     }
     return data.length();
   }
+
 }

@@ -32,13 +32,11 @@ public class FeatureTable extends RecordsTable<NumRecord> {
     super(data, dataIsCanonical);
   }
 
-  @Override
-  protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
+  @Override protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
     return new NumRecordList(data);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -53,31 +51,28 @@ public class FeatureTable extends RecordsTable<NumRecord> {
       super(data, dataIsCanonical);
     }
 
-    @Override
-    protected FeatureTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected FeatureTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new FeatureTable(data, dataIsCanonical);
     }
 
-    @Override
-    protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
+    @Override protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new NumRecordList(data);
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(FEATURE_PARAMS_INDEX, FEATURE_PARAMS_DEFAULT);
     }
   }
+
 }
 

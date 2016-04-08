@@ -765,8 +765,7 @@ public final class OS2Table extends Table {
       super(header, data);
     }
 
-    @Override
-    protected OS2Table subBuildTable(ReadableFontData data) {
+    @Override protected OS2Table subBuildTable(ReadableFontData data) {
       return new OS2Table(this.header(), data);
     }
 
@@ -1119,4 +1118,5 @@ public final class OS2Table extends Table {
       this.internalWriteData().writeUShort(Offset.usMaxContext.offset, maxContext);
     }
   }
+
 }

@@ -39,13 +39,11 @@ public class LangSysTable extends RecordsTable<NumRecord> {
     }
   }
 
-  @Override
-  protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
+  @Override protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
     return new NumRecordList(data);
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
@@ -62,31 +60,28 @@ public class LangSysTable extends RecordsTable<NumRecord> {
     // //////////////////////////////
     // private methods to update
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(LOOKUP_ORDER_INDEX, LOOKUP_ORDER_CONST);
       setField(REQ_FEATURE_INDEX_INDEX, NO_REQ_FEATURE);
     }
 
-    @Override
-    protected LangSysTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected LangSysTable readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new LangSysTable(data, dataIsCanonical);
     }
 
-    @Override
-    protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
+    @Override protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
       if (base != 0) {
         throw new UnsupportedOperationException();
       }
       return new NumRecordList(data);
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
   }
+
 }

@@ -97,37 +97,31 @@ public class GlyphGroup extends BitSet implements Iterable<Integer> {
     return get(glyph) ^ inverse;
   }
 
-  @Override
-  public int size() {
+  @Override public int size() {
     return cardinality();
   }
 
-  @Override
-  public Iterator<Integer> iterator() {
+  @Override public Iterator<Integer> iterator() {
     return new Iterator<Integer>() {
 
       int i = 0;
 
-      @Override
-      public boolean hasNext() {
+      @Override public boolean hasNext() {
         return nextSetBit(i) >= 0;
       }
 
-      @Override
-      public Integer next() {
+      @Override public Integer next() {
         i = nextSetBit(i);
         return i++;
       }
 
-      @Override
-      public void remove() {
+      @Override public void remove() {
         throw new UnsupportedOperationException();
       }
     };
   }
 
-  @Override
-  public String toString() {
+  @Override public String toString() {
     return toString(null);
   }
 
@@ -157,4 +151,5 @@ public class GlyphGroup extends BitSet implements Iterable<Integer> {
     }
     return sb.toString();
   }
+
 }

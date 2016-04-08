@@ -106,8 +106,7 @@ public final class BitmapGlyphInfo {
     return this.format;
   }
 
-  @Override
-  public int hashCode() {
+  @Override public int hashCode() {
     final int prime = 31;
     int result = 1;
     result = prime * result + blockOffset;
@@ -118,8 +117,7 @@ public final class BitmapGlyphInfo {
     return result;
   }
 
-  @Override
-  public boolean equals(Object obj) {
+  @Override public boolean equals(Object obj) {
     if (this == obj) {
       return true;
     }
@@ -150,9 +148,9 @@ public final class BitmapGlyphInfo {
 
   private static final class StartOffsetComparatorClass implements Comparator<BitmapGlyphInfo> {
 
-    @Override
-    public int compare(BitmapGlyphInfo o1, BitmapGlyphInfo o2) {
+    @Override public int compare(BitmapGlyphInfo o1, BitmapGlyphInfo o2) {
       return (o1.startOffset - o2.startOffset);
     }
   }
+
 }

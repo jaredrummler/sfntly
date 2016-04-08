@@ -40,4 +40,5 @@ abstract class GsubLookupTable extends LookupTable {
       super(table);
     }
   }
+
 }

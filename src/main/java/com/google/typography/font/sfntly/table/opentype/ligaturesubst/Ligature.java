@@ -47,34 +47,29 @@ public class Ligature extends RecordsTable<NumRecord> {
       super(table);
     }
 
-    @Override
-    protected Ligature readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
+    @Override protected Ligature readTable(ReadableFontData data, int base, boolean dataIsCanonical) {
       return new Ligature(data, base, dataIsCanonical);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
       setField(LIG_GLYPH_INDEX, LIG_GLYPH_DEFAULT);
     }
 
-    @Override
-    protected int fieldCount() {
+    @Override protected int fieldCount() {
       return FIELD_COUNT;
     }
 
-    @Override
-    protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
+    @Override protected RecordList<NumRecord> readRecordList(ReadableFontData data, int base) {
       return new NumRecordList(data);
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
 
-  @Override
-  protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
+  @Override protected RecordList<NumRecord> createRecordList(ReadableFontData data) {
     return new NumRecordList(data, 1);
   }
+
 }

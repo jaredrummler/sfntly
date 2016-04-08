@@ -28,47 +28,40 @@ public class LookupListTable extends OffsetRecordTable<LookupTable> {
     super(data, dataIsCanonical);
   }
 
-  @Override
-  protected LookupTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
+  @Override protected LookupTable readSubTable(ReadableFontData data, boolean dataIsCanonical) {
     return new LookupTable(data, base, dataIsCanonical);
   }
 
   static class Builder extends OffsetRecordTable.Builder<LookupListTable, LookupTable> {
 
-    @Override
-    protected LookupListTable readTable(
+    @Override protected LookupListTable readTable(
         ReadableFontData data, int baseUnused, boolean dataIsCanonical) {
       return new LookupListTable(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LookupTable> createSubTableBuilder() {
+    @Override protected VisibleSubTable.Builder<LookupTable> createSubTableBuilder() {
       return new LookupTable.Builder();
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LookupTable> createSubTableBuilder(
+    @Override protected VisibleSubTable.Builder<LookupTable> createSubTableBuilder(
         ReadableFontData data, boolean dataIsCanonical) {
       return new LookupTable.Builder(data, dataIsCanonical);
     }
 
-    @Override
-    protected VisibleSubTable.Builder<LookupTable> createSubTableBuilder(LookupTable subTable) {
+    @Override protected VisibleSubTable.Builder<LookupTable> createSubTableBuilder(LookupTable subTable) {
       return new LookupTable.Builder(subTable);
     }
 
-    @Override
-    protected void initFields() {
+    @Override protected void initFields() {
     }
 
-    @Override
-    public int fieldCount() {
+    @Override public int fieldCount() {
       return FIELD_COUNT;
     }
   }
 
-  @Override
-  public int fieldCount() {
+  @Override public int fieldCount() {
     return FIELD_COUNT;
   }
+
 }
