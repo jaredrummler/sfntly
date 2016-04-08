@@ -15,3 +15,9 @@ task fatJar(type: Jar) {
     with jar
 }
 
+javadoc {
+    options.addStringOption('XDoclint:none', '-quiet')
+    failOnError = false
+}
+
+apply from: 'maven-push.gradle'
