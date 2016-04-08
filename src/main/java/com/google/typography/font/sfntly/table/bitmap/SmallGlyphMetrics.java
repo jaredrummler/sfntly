@@ -17,12 +17,12 @@ import com.google.typography.font.sfntly.data.WritableFontData;
  */
 public class SmallGlyphMetrics extends GlyphMetrics {
 
-  static enum Offset {
+  enum Offset {
     metricsLength(5), height(0), width(1), BearingX(2), BearingY(3), Advance(4);
 
     final int offset;
 
-    private Offset(int offset) {
+    Offset(int offset) {
       this.offset = offset;
     }
   }

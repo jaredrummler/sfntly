@@ -62,7 +62,7 @@ public abstract class CMap extends SubTable implements Iterable<Integer> {
 
     final int value;
 
-    private CMapFormat(int value) {
+    CMapFormat(int value) {
       this.value = value;
     }
 

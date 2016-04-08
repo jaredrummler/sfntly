@@ -26,7 +26,7 @@ import java.util.TreeMap;
  */
 public final class EbdtTable extends SubTableContainerTable {
 
-  protected static enum Offset {
+  protected enum Offset {
     // header
     version(0), headerLength(FontData.DataSize.Fixed.size());
 

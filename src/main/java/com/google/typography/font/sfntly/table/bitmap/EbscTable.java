@@ -41,7 +41,7 @@ public class EbscTable extends Table {
 
     final int offset;
 
-    private Offset(int offset) {
+    Offset(int offset) {
       this.offset = offset;
     }
   }

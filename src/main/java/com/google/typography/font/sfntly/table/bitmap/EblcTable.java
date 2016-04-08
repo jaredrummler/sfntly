@@ -30,7 +30,7 @@ public class EblcTable extends SubTableContainerTable {
 
   public static final int NOTDEF = -1;
 
-  static enum Offset {
+  enum Offset {
     // header
     version(0),
     numSizes(4),

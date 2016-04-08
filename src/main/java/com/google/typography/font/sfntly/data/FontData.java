@@ -41,7 +41,7 @@ public abstract class FontData {
 
     private final int size;
 
-    private DataSize(int size) {
+    DataSize(int size) {
       this.size = size;
     }
 
